@@ -4,6 +4,16 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 70px;
+    margin-bottom: 50px;
+}
+
 a {
     color: #e50100;
     text-decoration: none;
