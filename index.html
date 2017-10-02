@@ -163,6 +163,28 @@
 	
 	<body>
 		<div id="kontainerra">
+            <div id="guztira-taula">
+                <div id="bai_guztira">
+                    <div class="etiketa">Bai</div>
+                    <div class="ehunekoak"></div>
+                    <div class="botoak"></div>
+                </div>
+                <div id="ez_guztira">
+                    <div class="etiketa">Ez</div>
+                    <div class="ehunekoak"></div>
+                    <div class="botoak"></div>
+                </div>
+                <div id="zuria_guztira">
+                    <div class="etiketa">Zuriak</div>
+                    <div class="ehunekoak"></div>
+                    <div class="botoak"></div>
+                </div>
+                <div id="baliogabeak_guztira">
+                    <div class="etiketa">Baliogabeak</div>
+                    <div class="ehunekoak"></div>
+                    <div class="botoak"></div>
+                </div>
+            </div>
 			<div id="kredituak">
 				<a href="http://www.argia.eus"><img id="mapa-argia-logoa" src="http://www.argia.eus/template/images/argia.jpg"></a>
                 <a target="_blank" href="http://www.iametza.eus"><img id="mapa-iametza-logoa" src="img/iametza.png"></a>
@@ -302,6 +324,8 @@
 						
 						if (error) return console.error(error);
 						
+                        beteGuztiraTaula(data_values);
+                        
                         beteVegueriakTaula(data_values);
                         
 						/*svg.selectAll("." + mota)
@@ -497,15 +521,15 @@
                 var zuria_guztira = 0;
                 var baliogabeak_guztira = 0;
                 
-                datuak.forEach(function(vegueria) {
+                for (var vegueria in datuak) {
                     
-                    botoak_guztira = botoak_guztira + vegueria.bai + vegueria.ez + vegueria.zuria + vegueria.baliogabeak;
-                    bai_guztira = bai_guztira + vegueria.bai;
-                    ez_guztira = ez_guztira + vegueria.ez;
-                    zuria_guztira = zuria_guztira + vegueria.zuria;
-                    baliogabeak_guztira = baliogabeak_guztira + vegueria.baliogabeak;
+                    botoak_guztira = botoak_guztira + datuak[vegueria].bai + datuak[vegueria].ez + datuak[vegueria].zuria + datuak[vegueria].baliogabeak;
+                    bai_guztira = bai_guztira + datuak[vegueria].bai;
+                    ez_guztira = ez_guztira + datuak[vegueria].ez;
+                    zuria_guztira = zuria_guztira + datuak[vegueria].zuria;
+                    baliogabeak_guztira = baliogabeak_guztira + datuak[vegueria].baliogabeak;
                     
-                });
+                }
                 
                 d3.select("#bai_guztira .botoak").text(bai_guztira.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
                 d3.select("#ez_guztira .botoak").text(ez_guztira.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
