@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", function(e) {
 
-    var width = 520,
-        height = 500;
+    var width = 400,
+        height = 400;
 
     var projection = d3.geo.mercator()
         .center([1.7,41.7])
-        .scale(9000)
+        .scale(7000)
         .translate([width / 2, height / 2]);
 
     var path = d3.geo.path()
@@ -87,6 +87,8 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
                 beteVegueriakTaula(data_values);
 
+                marraztuVegueriarenGrafikoa(data_values['barcelona']);
+                
                 /*svg.selectAll("." + mota)
                     .data(topojson.feature(cat, cat.objects[mota]).features)
                     .enter().append("path")
@@ -113,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
                         d3.selectAll(".vegueriak").attr("class", "vegueriak");
                         d3.select(this).attr("class", "vegueriak aktibo");
                         d3.select("#unitate-izena").text(data_values['girona'].izena);
-                        marraztuVegueriarenGrafikoa(data_values['girona'])
+                        marraztuVegueriarenGrafikoa(data_values['girona']);
                         beteTaula(data_values['girona']);
                     });
 
@@ -126,7 +128,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
                         d3.select(this).attr("class", "vegueriak aktibo");
                         console.log(data_values['alt pirineu i aran']);
                         d3.select("#unitate-izena").text(data_values['alt pirineu i aran'].izena);
-                        marraztuVegueriarenGrafikoa(data_values['alt pirineu i aran'])
+                        marraztuVegueriarenGrafikoa(data_values['alt pirineu i aran']);
                         beteTaula(data_values['alt pirineu i aran']);
                     });
 
@@ -139,7 +141,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
                         d3.select(this).attr("class", "vegueriak aktibo");
                         console.log(data_values['terres de l"ebre']);
                         d3.select("#unitate-izena").text(data_values['terres de l"ebre'].izena);
-                        marraztuVegueriarenGrafikoa(data_values['terres de l"ebre'])
+                        marraztuVegueriarenGrafikoa(data_values['terres de l"ebre']);
                         beteTaula(data_values['terres de l"ebre']);
                     });
 
@@ -152,7 +154,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
                         d3.select(this).attr("class", "vegueriak aktibo");
                         console.log(data_values['tarragona']);
                         d3.select("#unitate-izena").text(data_values['tarragona'].izena);
-                        marraztuVegueriarenGrafikoa(data_values['tarragona'])
+                        marraztuVegueriarenGrafikoa(data_values['tarragona']);
                         beteTaula(data_values['tarragona']);
                     });
 
@@ -165,7 +167,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
                         d3.select(this).attr("class", "vegueriak aktibo");
                         console.log(data_values['barcelona']);
                         d3.select("#unitate-izena").text(data_values['barcelona'].izena);
-                        marraztuVegueriarenGrafikoa(data_values['barcelona'])
+                        marraztuVegueriarenGrafikoa(data_values['barcelona']);
                         beteTaula(data_values['barcelona']);
                     });
 
@@ -180,7 +182,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
                         d3.select(this).attr("class", "vegueriak aktibo");
                         console.log(data_values['lleida']);
                         d3.select("#unitate-izena").text(data_values['lleida'].izena);
-                        marraztuVegueriarenGrafikoa(data_values['lleida'])
+                        marraztuVegueriarenGrafikoa(data_values['lleida']);
                         beteTaula(data_values['lleida']);
                     });
 
@@ -193,7 +195,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
                         d3.select(this).attr("class", "vegueriak aktibo");
                         console.log(data_values['central']);
                         d3.select("#unitate-izena").text(data_values['central'].izena);
-                        marraztuVegueriarenGrafikoa(data_values['central'])
+                        marraztuVegueriarenGrafikoa(data_values['central']);
                         beteTaula(data_values['central']);
                     });
 
