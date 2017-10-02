@@ -11,7 +11,7 @@ h1 {
 h2 {
     text-align: center;
     margin-top: 70px;
-    margin-bottom: 50px;
+    margin-bottom: 5px;
 }
 
 a {
@@ -120,9 +120,14 @@ a {
     background-position: 51% 47%;
 }
 
+.azalpena {
+    text-align: center;
+    color: #666;
+}
+
 #mapa-kontainerra {
     position: relative;
-    margin-top: 60px;
+    margin-top: 40px;
 }
 
 #kredituak {
