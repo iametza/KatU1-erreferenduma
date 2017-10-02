@@ -1,0 +1,44 @@
+{
+"barcelona": {
+	"izena": "Barcelona",
+	"bai": 1222721,
+	"ez": 138031,
+	"zuria": 34156,
+	"baliogabeak": 14626 },
+"girona": {
+	"izena": "Girona",
+	"bai": 243259,
+	"ez": 10080,
+	"zuria": 3113,
+	"baliogabeak": 1414 },
+"lleida": {
+	"izena": "Lleida",
+	"bai": 118799,
+	"ez": 6274,
+	"zuria": 1730,
+	"baliogabeak": 1033 },
+"tarragona": {
+	"izena": "Camp de Tarragona",
+	"bai": 142386,
+	"ez": 8897,
+	"zuria": 2464,
+	"baliogabeak": 1157 },
+"terres de l\"ebre": {
+	"izena": "Terres de l'Ebre",
+	"bai": 62652,
+	"ez": 3434,
+	"zuria": 916,
+	"baliogabeak": 539 },
+"central": {
+	"izena": "Catalunya Central",
+	"bai": 203653,
+	"ez": 8499,
+	"zuria": 2816,
+	"baliogabeak": 1082 },
+"alt pirineu i aran": {
+	"izena": "Alt Pirineu i Aran",
+	"bai": 26674,
+	"ez": 1350,
+	"zuria": 391,
+    "baliogabeak": 278 }
+}

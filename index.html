@@ -1,0 +1,492 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Katalunia 9N - Ara es l'hora</title>
+		<style>
+			
+			body {
+				font-size: 62,5%;
+			}
+			
+            a {
+                color: #e50100;
+                text-decoration: none;
+            }
+            
+			#kontainerra {
+				margin: 0 auto 0 auto;
+				width: 666px;
+				/*border: 1px solid black;*/
+				position: relative;
+			}
+			
+            #kredituak {
+				color: #333;
+				font-family: Arial,Helvetica,sans-serif;
+				font-size: 12px;
+				left: 135px;
+				position: absolute;
+				top: 420px;
+				width: 250px;
+			}
+            
+            #mapa-argia-logoa {
+				width: 130px;
+			}
+            
+			#mapa {
+				display: inline-block;
+			}
+			
+			#unitate-izena {
+				position: absolute;
+				top: 10px;
+				right: 10px;
+				width: 450px;
+				color: #777777;
+				font-size: 2em;
+				text-align: center;
+			}
+			
+			.udalerriak, .eskualdeak, .probintziak, .vegueriak {
+				fill: #DDDDCC;
+                stroke: #777;
+				stroke-dasharray: 2,2;
+				stroke-linejoin: round;
+			}
+			
+            .udalerriak.aktibo, .eskualdeak.aktibo, .probintziak.aktibo, .vegueriak.aktibo {
+				fill: #E50000;
+			}
+            
+			/*.udalerriak:hover, .eskualdeak:hover, .probintziak:hover, .vegueriak:hover {
+				fill: #E50000;
+			}*/
+			
+			.eskualdeak-mugak, .probintziak-mugak, .vegueriak-mugak {
+				fill: none;
+				stroke: #777;
+				stroke-dasharray: 2,2;
+				stroke-linejoin: round;
+			}
+			
+			.udalerriak-mugak {
+				fill: none;
+				stroke: #777;
+				stroke-dasharray: 2,1;
+				stroke-linejoin: round;
+			}
+			
+			.kanpo-mugak {
+				fill: none;
+				stroke: #777;
+				stroke-linejoin: round;
+			}
+			
+			#datuak {
+				position: absolute;
+				bottom: 10px;
+				right: 5px;
+				color: #777777;
+			}
+			
+			#datuak .kolorea {
+				width: 15px;
+			}
+			
+			#datuak .mota {
+				padding: 0 0 0 5px;
+				width: 90px;
+			}
+			
+			#datuak .botoak {
+				width: 80px;
+				text-align: right;
+			}
+
+			#datuak .ehunekoak {
+				width: 65px;
+				text-align: right;
+			}
+						
+			#tarta {
+				position: absolute;
+				right: 25px;
+				top: 180px;
+			}
+			
+			#tarta text {
+				fill: #FFFFFF;
+			}
+			
+			/*#tarta path {
+				stroke: #FFFFFF;
+				stroke-width: 1;
+			}*/
+		</style>
+        <script type="text/javascript">
+
+            var _gaq = _gaq || [];
+            
+            _gaq.push(['_setAccount', 'UA-33197095-1']);
+            
+            _gaq.push(['_setDomainName', '.argia.eus']);
+            
+             _gaq.push(['_trackPageview']);
+            
+            
+            
+            _gaq.push(['tracker2._setAccount', 'UA-4220678-1']);
+            
+            _gaq.push(['tracker2._setDomainName', '.argia.eus']);
+            
+             _gaq.push(['tracker2._trackPageview']);
+            
+            
+            
+            (function() {
+            
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/u/ga.js';
+            
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            
+            })();
+
+        </script>
+	</head>
+	
+	<body>
+		<div id="kontainerra">
+			<div id="kredituak">
+				<a href="http://www.argia.eus"><img id="mapa-argia-logoa" src="http://www.argia.eus/template/images/argia.jpg"></a>
+				<div>
+				  Infografia: <strong>Asier Iturralde Sarasola</strong>&nbsp;<a href="http://www.twitter.com/aldatsa">@aldatsa</a>
+				</div>
+				<div>
+					Datuak: Kataluniako Generalitatea
+				</div>
+			</div>
+			<div id="mapa"></div>
+			<div id="unitate-izena">Barcelona</div>
+			<table id="datuak">
+				<tr id="bai">
+					<td class="kolorea" style="background-color: #FF7F02"></td>
+					<td class="mota">Bai</td>
+					<td class="botoak">1.222.721</td>
+					<td class="ehunekoak">%89,81</td>
+				</tr>
+				<tr id="ez">
+					<td class="kolorea" style="background-color: #5AC8D5"></td>
+					<td class="mota">Ez</td>
+					<td class="botoak">138.031</td>
+					<td class="ehunekoak">%10,14</td>
+				</tr>
+				<tr id="zuria">
+					<td class="kolorea" style="background-color: #D86969"></td>
+					<td class="mota">Zuria</td>
+					<td class="botoak">34.156</td>
+					<td class="ehunekoak">%0,3</td>
+				</tr>
+				<tr id="baliogabeak">
+					<td class="kolorea" style="background-color: #95AA62"></td>
+					<td class="mota">Baliogabeak</td>
+					<td class="botoak">14.626</td>
+					<td class="ehunekoak">%0,2</td>
+				</tr>
+			</table>
+			<div id="tarta"></div>
+		</div>
+
+		<script src="http://d3js.org/d3.v3.min.js"></script>
+		<script src="http://d3js.org/topojson.v1.min.js"></script>
+
+		<script>
+			var width = 520,  
+				height = 500; 
+
+			var projection = d3.geo.mercator()  
+				.center([1.7,41.7])  
+				.scale(9000)  
+				.translate([width / 2, height / 2]); 
+
+			var path = d3.geo.path()  
+				.projection(projection);
+
+			var svg = d3.select("#mapa").append("svg")
+				.attr("width", width)
+				.attr("height", height);
+			
+			var propietateen_izenak = {
+				"probintziak": {
+					id: "provincia",
+					izena: "nom_prov"
+				},
+				"eskualdeak": {
+					id: "comarca",
+					izena: "nom_comar"
+				},
+				"udalerriak": {
+					id: "MUNICIPI",
+					izena: "NOM_MUNI"
+				}
+			};
+            
+            var vegueriak = {
+                'girona': d3.set(["02", "10", "20", "28", "19", "31", "34"]),
+                'alt pirineu i aran': d3.set(["26", "05", "25", "04", "15", "39"]),
+                'terres de l"ebre': d3.set(["22", "09", "37", "30"]),
+                'tarragona': d3.set(["08", "16", "01", "36", "29", "12"]),
+                'barcelona': d3.set(["17", "03", "11", "13", "40", "41", "21"]),
+                'lleida': d3.set(["33", "23", "27", "18", "38", "32"]),
+                'central': d3.set(["14", "35", "07", "06", "24"])
+            }
+            
+			var probatarako_datuak = {
+				baibai: 29774,
+				baiez: 2178,
+				baizuria: 253,
+				ez: 940,
+				zuria: 155,
+				besteak: 768
+			}
+			
+			//marraztuKataluniakoMapa("udalerriak");
+			marraztuKataluniakoMapa("eskualdeak");
+            //marraztuKataluniakoMapa("vegueriak");
+			//marraztuKataluniakoMapa("probintziak");
+			
+			function marraztuKataluniakoMapa(mota) {
+				
+				d3.json("datuak/vegueriak.json", function(error, data_values) {
+					
+					//console.log(data_values);
+					//if (error) return console.error(error);
+                    console.log(error);
+                    
+					d3.json("topoJSON/" + mota + ".topo.json", function(error, cat) {
+						
+						console.log(cat);
+						
+						if (error) return console.error(error);
+						
+						/*svg.selectAll("." + mota)
+							.data(topojson.feature(cat, cat.objects[mota]).features)
+							.enter().append("path")
+							.attr("class", mota)
+							.attr("id", function(d) {
+								return mota + "_" + d.properties[propietateen_izenak[mota].id];
+							})
+							.attr("d", path)
+							.on("mouseover", function(d) {
+								//console.log(data_values[parseInt(d.properties[propietateen_izenak[mota].id], 10) - 1].Catalan);
+								d3.select("#unitate-izena").text(d.properties[propietateen_izenak[mota].izena]);
+                                console.log(d.properties[propietateen_izenak[mota].id]);
+								//drawPieChart(data_values[parseInt(d.properties[propietateen_izenak[mota].id], 10) - 1].Catalan);
+								drawPieChart(probatarako_datuak);
+							});
+						*/
+                        
+						svg.append("path")
+                            .datum(topojson.merge(cat, cat.objects.eskualdeak.geometries.filter(function(d) { return vegueriak['girona'].has(d.properties.comarca); })))
+                            .attr("class", "vegueriak")
+                            .attr("id", "girona")
+                            .attr("d", path)
+                            .on("mouseover", function(d) {
+                                d3.selectAll(".vegueriak").attr("class", "vegueriak");
+                                d3.select(this).attr("class", "vegueriak aktibo");
+								d3.select("#unitate-izena").text(data_values['girona'].izena);
+								drawPieChart(data_values['girona'])
+                                beteTaula(data_values['girona']);
+							});
+                        
+                        svg.append("path")
+                            .datum(topojson.merge(cat, cat.objects.eskualdeak.geometries.filter(function(d) { return vegueriak['alt pirineu i aran'].has(d.properties.comarca); })))
+                            .attr("class", "vegueriak")
+                            .attr("d", path)
+                            .on("mouseover", function(d) {
+                                d3.selectAll(".vegueriak").attr("class", "vegueriak");
+                                d3.select(this).attr("class", "vegueriak aktibo");
+                                console.log(data_values['alt pirineu i aran']);
+								d3.select("#unitate-izena").text(data_values['alt pirineu i aran'].izena);
+								drawPieChart(data_values['alt pirineu i aran'])
+                                beteTaula(data_values['alt pirineu i aran']);
+							});
+                        
+                        svg.append("path")
+                            .datum(topojson.merge(cat, cat.objects.eskualdeak.geometries.filter(function(d) { return vegueriak['terres de l"ebre'].has(d.properties.comarca); })))
+                            .attr("class", "vegueriak")
+                            .attr("d", path)
+                            .on("mouseover", function(d) {
+                                d3.selectAll(".vegueriak").attr("class", "vegueriak");
+                                d3.select(this).attr("class", "vegueriak aktibo");
+                                console.log(data_values['terres de l"ebre']);
+								d3.select("#unitate-izena").text(data_values['terres de l"ebre'].izena);
+								drawPieChart(data_values['terres de l"ebre'])
+                                beteTaula(data_values['terres de l"ebre']);
+							});
+                        
+                        svg.append("path")
+                            .datum(topojson.merge(cat, cat.objects.eskualdeak.geometries.filter(function(d) { return vegueriak['tarragona'].has(d.properties.comarca); })))
+                            .attr("class", "vegueriak")
+                            .attr("d", path)
+                            .on("mouseover", function(d) {
+                                d3.selectAll(".vegueriak").attr("class", "vegueriak");
+                                d3.select(this).attr("class", "vegueriak aktibo");
+                                console.log(data_values['tarragona']);
+								d3.select("#unitate-izena").text(data_values['tarragona'].izena);
+								drawPieChart(data_values['tarragona'])
+                                beteTaula(data_values['tarragona']);
+							});
+                        
+                        svg.append("path")
+                            .datum(topojson.merge(cat, cat.objects.eskualdeak.geometries.filter(function(d) { return vegueriak['barcelona'].has(d.properties.comarca); })))
+                            .attr("class", "vegueriak aktibo")
+                            .attr("d", path)
+                            .on("mouseover", function(d) {
+                                d3.selectAll(".vegueriak").attr("class", "vegueriak");
+                                d3.select(this).attr("class", "vegueriak aktibo");
+                                console.log(data_values['barcelona']);
+								d3.select("#unitate-izena").text(data_values['barcelona'].izena);
+								drawPieChart(data_values['barcelona'])
+                                beteTaula(data_values['barcelona']);
+							});
+                        
+                        drawPieChart(data_values['barcelona']);
+                        
+                        svg.append("path")
+                            .datum(topojson.merge(cat, cat.objects.eskualdeak.geometries.filter(function(d) { return vegueriak['lleida'].has(d.properties.comarca); })))
+                            .attr("class", "vegueriak")
+                            .attr("d", path)
+                            .on("mouseover", function(d) {
+                                d3.selectAll(".vegueriak").attr("class", "vegueriak");
+                                d3.select(this).attr("class", "vegueriak aktibo");
+                                console.log(data_values['lleida']);
+								d3.select("#unitate-izena").text(data_values['lleida'].izena);
+								drawPieChart(data_values['lleida'])
+                                beteTaula(data_values['lleida']);
+							});
+                        
+                        svg.append("path")
+                            .datum(topojson.merge(cat, cat.objects.eskualdeak.geometries.filter(function(d) { return vegueriak['central'].has(d.properties.comarca); })))
+                            .attr("class", "vegueriak")
+                            .attr("d", path)
+                            .on("mouseover", function(d) {
+                                d3.selectAll(".vegueriak").attr("class", "vegueriak");
+                                d3.select(this).attr("class", "vegueriak aktibo");
+                                console.log(data_values['central']);
+								d3.select("#unitate-izena").text(data_values['central'].izena);
+								drawPieChart(data_values['central'])
+                                beteTaula(data_values['central']);
+							});
+                        
+                        /*
+						// Unitateen arteko mugak (a !== b)
+						svg.append("path")
+							.datum(topojson.mesh(cat, cat.objects[mota], function(a, b) { return a !== b; }))
+							.attr("d", path)
+							.attr("class", mota + "-mugak");
+						*/
+						// Kanpo-mugak (a === b)
+						svg.append("path")
+							.datum(topojson.mesh(cat, cat.objects[mota], function(a, b) { return a === b; }))
+							.attr("d", path)
+							.attr("class", "kanpo-mugak");
+					});
+				});
+			}
+            
+            /**
+            * Function that could be used to round a number to a given decimal points. Returns the answer
+            * Arguments :  number - The number that must be rounded
+            *				decimal_points - The number of decimal points that should appear in the result
+            */
+           function roundNumber(number,decimal_points) {
+               if(!decimal_points) return Math.round(number);
+               if(number == 0) {
+                   var decimals = "";
+                   for(var i=0;i<decimal_points;i++) decimals += "0";
+                   return "0."+decimals;
+               }
+                
+               var exponent = Math.pow(10,decimal_points);
+               var num = Math.round((number * exponent)).toString();
+               
+               return num.slice(0,-1*decimal_points) + "." + num.slice(-1*decimal_points)
+           }
+			
+            function beteTaula(datuak) {
+                
+                var botoak_guztira = datuak.bai + datuak.ez + datuak.zuria + datuak.baliogabeak;
+                //var botoak_guztira = datuak.baibai + datuak.baiez + datuak.baizuria + datuak.ez + datuak.zuria;
+                
+                d3.select("#bai .botoak").text(datuak.bai.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+                d3.select("#ez .botoak").text(datuak.ez.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+                d3.select("#zuria .botoak").text(datuak.zuria.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+                d3.select("#baliogabeak .botoak").text(datuak.baliogabeak.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+                
+                d3.select("#bai .ehunekoak").text("%" + ((roundNumber(100 * datuak.bai / botoak_guztira, 2) < 1) ? '0' : '') + roundNumber(100 * datuak.bai / botoak_guztira, 2).toString().replace(/\./g, ','));
+                d3.select("#ez .ehunekoak").text("%" + ((roundNumber(100 * datuak.ez / botoak_guztira, 2) < 1) ? '0' : '') + roundNumber(100 * datuak.ez / botoak_guztira, 2).toString().replace(/\./g, ','));
+                d3.select("#zuria .ehunekoak").text("%" + ((roundNumber(100 * datuak.zuria / botoak_guztira, 2) < 1) ? '0' : '') + roundNumber(100 * datuak.zuria / botoak_guztira, 2).toString().replace(/\./g, ','));
+                d3.select("#baliogabeak .ehunekoak").text("%" + ((roundNumber(100 * datuak.baliogabeak / botoak_guztira, 2) < 1) ? '0' : '') + roundNumber(100 * datuak.baliogabeak / botoak_guztira, 2).toString().replace(/\./g, ','));
+            }
+            
+			function drawPieChart(datuak) {
+				var w = 150;
+				var h = 150;
+				var r = h/2;
+				var color = ["#FF7F02", 	// Bai
+							 "#5AC8D5",		// Ez
+							 "#D86969",		// Zuria
+							 "#95AA62"]; 	// Baliogabeak
+
+				var data = [{"label": "Bai",
+							 "value": datuak.bai},  
+							{"label":"Ez", 
+							 "value": datuak.ez},  
+							{"label":"Zuria", 
+							 "value": datuak.zuria},  
+							{"label":"Baliogabeak", 
+							 "value": datuak.baliogabeak}];
+
+				
+				d3.select("#tarta svg").remove();
+				
+				var vis = d3.select('#tarta')
+							.append("svg:svg")
+							.data([data])
+							.attr("width", w)
+							.attr("height", h)
+							.append("svg:g")
+							.attr("transform", "translate(" + r + "," + r + ")");
+				
+				var pie = d3.layout.pie().value(function(d){return d.value;});
+
+				// declare an arc generator function
+				var arc = d3.svg.arc().outerRadius(r);
+
+				// select paths, use arc generator to draw
+				var arcs = vis.selectAll("g.slice").data(pie).enter().append("svg:g").attr("class", "slice");
+				arcs.append("svg:path")
+					.attr("fill", function(d, i){
+						return color[i];
+					})
+					.attr("d", function (d) {
+						// log the result of the arc generator to show how cool it is :)
+						//console.log(arc(d));
+						return arc(d);
+					});
+
+				// add the text
+				/*arcs.append("svg:text").attr("transform", function(d){
+							d.innerRadius = 0;
+							d.outerRadius = r;
+							return "translate(" + arc.centroid(d) + ")";}).attr("text-anchor", "middle").text( function(d, i) {
+								return data[i].label;
+							});*/
+			}
+		</script>
+	</body>
+</html>
