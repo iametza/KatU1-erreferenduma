@@ -1,6 +1,7 @@
 body {
     font-size: 62,5%;
     color: #333;
+    font-family: 'Open Sans', sans-serif;
 }
 
 a {
@@ -216,17 +217,14 @@ a {
 }
 
 #vegueriak-taula {
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin: 50px auto;
 }
 
 #vegueriak-taula th {
     color: #fff;
     font-size: 16px;
     text-align: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-right: 6px;
+    padding: 10px 6px;
     border-bottom: 1px solid #ccc;
     border-right: 1px solid #fff;
 }
