@@ -93,7 +93,7 @@
             
 			#datuak {
 				position: absolute;
-				bottom: 10px;
+				top: 390px;
 				right: 5px;
 				color: #777777;
 			}
@@ -123,6 +123,9 @@
                 top: 219px;
             }
             
+            #vegueriak-taula {
+                margin-top: 50px;
+            }
             
 		</style>
         <script type="text/javascript">
@@ -200,8 +203,17 @@
 			</table>
 			<!--<div id="tarta"></div>-->
             <div id="vegueria-grafikoa"></div>
+            <table id="vegueriak-taula">
+                <tr class="goiburua">
+                    <th></th>
+                    <th class="bai">Bai</td>
+                    <td class="ez">Ez</td>
+                    <td class="zuria">Zuriak</td>
+                    <td class="baliogabeak">Baliogabeak</td>
+                </tr>
+            </table>
 		</div>
-
+        
 		<script src="http://d3js.org/d3.v3.min.js"></script>
 		<script src="http://d3js.org/topojson.v1.min.js"></script>
         <script type="text/javascript" src="js/c3.min.js"></script>
@@ -270,6 +282,12 @@
             //marraztuKataluniakoMapa("vegueriak");
 			//marraztuKataluniakoMapa("probintziak");
 			
+            function kalkulatuEhunekoa(balioa, guztira, hamartarrak) {
+
+                return (100 * balioa / guztira).toFixed(hamartarrak).replace(/\./g, ',');
+
+            }
+            
 			function marraztuKataluniakoMapa(mota) {
 				
 				d3.json("datuak/vegueriak.json", function(error, data_values) {
@@ -284,6 +302,8 @@
 						
 						if (error) return console.error(error);
 						
+                        beteVegueriakTaula(data_values);
+                        
 						/*svg.selectAll("." + mota)
 							.data(topojson.feature(cat, cat.objects[mota]).features)
 							.enter().append("path")
@@ -443,6 +463,59 @@
                 d3.select("#ez .ehunekoak").text("%" + ((roundNumber(100 * datuak.ez / botoak_guztira, 2) < 1) ? '0' : '') + roundNumber(100 * datuak.ez / botoak_guztira, 2).toString().replace(/\./g, ','));
                 d3.select("#zuria .ehunekoak").text("%" + ((roundNumber(100 * datuak.zuria / botoak_guztira, 2) < 1) ? '0' : '') + roundNumber(100 * datuak.zuria / botoak_guztira, 2).toString().replace(/\./g, ','));
                 d3.select("#baliogabeak .ehunekoak").text("%" + ((roundNumber(100 * datuak.baliogabeak / botoak_guztira, 2) < 1) ? '0' : '') + roundNumber(100 * datuak.baliogabeak / botoak_guztira, 2).toString().replace(/\./g, ','));
+            }
+            
+            function beteVegueriakTaula(datuak) {
+                
+                var katea = "";
+
+                for (var vegueria in datuak) {
+                
+                    var guztira = datuak[vegueria].bai + datuak[vegueria].ez + datuak[vegueria].zuria + datuak[vegueria].baliogabeak;
+                    
+                    katea = katea +
+                        "<tr>" +
+                            "<td>" + datuak[vegueria].izena + "</td>" +
+                            "<td>" + datuak[vegueria].bai.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " (%" + kalkulatuEhunekoa(datuak[vegueria].bai, guztira, 2) + ")" + "</td>" +
+                            "<td>" + datuak[vegueria].ez.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " (%" + kalkulatuEhunekoa(datuak[vegueria].ez, guztira, 2) + ")" + "</td>" +
+                            "<td>" + datuak[vegueria].zuria.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " (%" + kalkulatuEhunekoa(datuak[vegueria].zuria, guztira, 2) + ")" + "</td>" +
+                            "<td>" + datuak[vegueria].baliogabeak.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " (%" + kalkulatuEhunekoa(datuak[vegueria].baliogabeak, guztira, 2) + ")" + "</td>" +
+                        "</tr>";
+                }
+
+                var tbody = document.querySelector("#vegueriak-taula");
+
+                tbody.innerHTML = tbody.innerHTML + katea;
+                
+            }
+            
+            function beteGuztiraTaula(datuak) {
+                
+                var botoak_guztira = 0;
+                var bai_guztira = 0;
+                var ez_guztira = 0;
+                var zuria_guztira = 0;
+                var baliogabeak_guztira = 0;
+                
+                datuak.forEach(function(vegueria) {
+                    
+                    botoak_guztira = botoak_guztira + vegueria.bai + vegueria.ez + vegueria.zuria + vegueria.baliogabeak;
+                    bai_guztira = bai_guztira + vegueria.bai;
+                    ez_guztira = ez_guztira + vegueria.ez;
+                    zuria_guztira = zuria_guztira + vegueria.zuria;
+                    baliogabeak_guztira = baliogabeak_guztira + vegueria.baliogabeak;
+                    
+                });
+                
+                d3.select("#bai_guztira .botoak").text(bai_guztira.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+                d3.select("#ez_guztira .botoak").text(ez_guztira.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+                d3.select("#zuria_guztira .botoak").text(zuria_guztira.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+                d3.select("#baliogabeak_guztira .botoak").text(baliogabeak_guztira.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+                
+                d3.select("#bai_guztira .ehunekoak").text("%" + ((roundNumber(100 * bai_guztira / botoak_guztira, 2) < 1) ? '0' : '') + roundNumber(100 * bai_guztira / botoak_guztira, 2).toString().replace(/\./g, ','));
+                d3.select("#ez_guztira .ehunekoak").text("%" + ((roundNumber(100 * ez_guztira / botoak_guztira, 2) < 1) ? '0' : '') + roundNumber(100 * ez_guztira / botoak_guztira, 2).toString().replace(/\./g, ','));
+                d3.select("#zuria_guztira .ehunekoak").text("%" + ((roundNumber(100 * zuria_guztira / botoak_guztira, 2) < 1) ? '0' : '') + roundNumber(100 * zuria_guztira / botoak_guztira, 2).toString().replace(/\./g, ','));
+                d3.select("#baliogabeak_guztira .ehunekoak").text("%" + ((roundNumber(100 * baliogabeak_guztira / botoak_guztira, 2) < 1) ? '0' : '') + roundNumber(100 * baliogabeak_guztira / botoak_guztira, 2).toString().replace(/\./g, ','));
             }
             
             function marraztuVegueriarenGrafikoa(datuak) {
