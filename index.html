@@ -3,6 +3,7 @@
 <html>
 	<head>
 		<title>Katalunia 9N - Ara es l'hora</title>
+        <link href="css/c3.min.css" rel="stylesheet">
 		<style>
 			
 			body {
@@ -55,7 +56,7 @@
 			}
 			
 			.udalerriak, .eskualdeak, .probintziak, .vegueriak {
-				fill: #DDDDCC;
+				fill: #eee;
                 stroke: #777;
 				stroke-dasharray: 2,2;
 				stroke-linejoin: round;
@@ -82,13 +83,14 @@
 				stroke-dasharray: 2,1;
 				stroke-linejoin: round;
 			}
-			
-			.kanpo-mugak {
-				fill: none;
-				stroke: #777;
-				stroke-linejoin: round;
-			}
-			
+
+            .kanpo-mugak {
+                fill: none;
+                stroke: #777;
+                stroke-width: 2px;
+                stroke-linejoin: round;
+            }
+            
 			#datuak {
 				position: absolute;
 				bottom: 10px;
@@ -114,21 +116,14 @@
 				width: 65px;
 				text-align: right;
 			}
-						
-			#tarta {
-				position: absolute;
-				right: 25px;
-				top: 180px;
-			}
-			
-			#tarta text {
-				fill: #FFFFFF;
-			}
-			
-			/*#tarta path {
-				stroke: #FFFFFF;
-				stroke-width: 1;
-			}*/
+            
+            #vegueria-grafikoa {
+                position: absolute !important;
+                right: -30px;
+                top: 219px;
+            }
+            
+            
 		</style>
         <script type="text/javascript">
 
@@ -179,36 +174,38 @@
 			<div id="unitate-izena">Barcelona</div>
 			<table id="datuak">
 				<tr id="bai">
-					<td class="kolorea" style="background-color: #FF7F02"></td>
+					<td class="kolorea" style="background-color: #009EE3"></td>
 					<td class="mota">Bai</td>
 					<td class="botoak">1.222.721</td>
 					<td class="ehunekoak">%89,81</td>
 				</tr>
 				<tr id="ez">
-					<td class="kolorea" style="background-color: #5AC8D5"></td>
+					<td class="kolorea" style="background-color: #E6205B"></td>
 					<td class="mota">Ez</td>
 					<td class="botoak">138.031</td>
 					<td class="ehunekoak">%10,14</td>
 				</tr>
 				<tr id="zuria">
-					<td class="kolorea" style="background-color: #D86969"></td>
+					<td class="kolorea" style="background-color: #918B53"></td>
 					<td class="mota">Zuria</td>
 					<td class="botoak">34.156</td>
 					<td class="ehunekoak">%0,3</td>
 				</tr>
 				<tr id="baliogabeak">
-					<td class="kolorea" style="background-color: #95AA62"></td>
+					<td class="kolorea" style="background-color: #DB9A16"></td>
 					<td class="mota">Baliogabeak</td>
 					<td class="botoak">14.626</td>
 					<td class="ehunekoak">%0,2</td>
 				</tr>
 			</table>
-			<div id="tarta"></div>
+			<!--<div id="tarta"></div>-->
+            <div id="vegueria-grafikoa"></div>
 		</div>
 
 		<script src="http://d3js.org/d3.v3.min.js"></script>
 		<script src="http://d3js.org/topojson.v1.min.js"></script>
-
+        <script type="text/javascript" src="js/c3.min.js"></script>
+        
 		<script>
 			var width = 520,  
 				height = 500; 
@@ -259,6 +256,15 @@
 				besteak: 768
 			}
 			
+            var aukerak = {
+                koloreak: {
+                    bai: "#009EE3",
+                    ez: "#E6205B",
+                    zuria: "#918B53",
+                    baliogabeak: "#DB9A16"
+                }
+            };
+            
 			//marraztuKataluniakoMapa("udalerriak");
 			marraztuKataluniakoMapa("eskualdeak");
             //marraztuKataluniakoMapa("vegueriak");
@@ -304,7 +310,7 @@
                                 d3.selectAll(".vegueriak").attr("class", "vegueriak");
                                 d3.select(this).attr("class", "vegueriak aktibo");
 								d3.select("#unitate-izena").text(data_values['girona'].izena);
-								drawPieChart(data_values['girona'])
+								marraztuVegueriarenGrafikoa(data_values['girona'])
                                 beteTaula(data_values['girona']);
 							});
                         
@@ -317,7 +323,7 @@
                                 d3.select(this).attr("class", "vegueriak aktibo");
                                 console.log(data_values['alt pirineu i aran']);
 								d3.select("#unitate-izena").text(data_values['alt pirineu i aran'].izena);
-								drawPieChart(data_values['alt pirineu i aran'])
+								marraztuVegueriarenGrafikoa(data_values['alt pirineu i aran'])
                                 beteTaula(data_values['alt pirineu i aran']);
 							});
                         
@@ -330,7 +336,7 @@
                                 d3.select(this).attr("class", "vegueriak aktibo");
                                 console.log(data_values['terres de l"ebre']);
 								d3.select("#unitate-izena").text(data_values['terres de l"ebre'].izena);
-								drawPieChart(data_values['terres de l"ebre'])
+								marraztuVegueriarenGrafikoa(data_values['terres de l"ebre'])
                                 beteTaula(data_values['terres de l"ebre']);
 							});
                         
@@ -343,7 +349,7 @@
                                 d3.select(this).attr("class", "vegueriak aktibo");
                                 console.log(data_values['tarragona']);
 								d3.select("#unitate-izena").text(data_values['tarragona'].izena);
-								drawPieChart(data_values['tarragona'])
+								marraztuVegueriarenGrafikoa(data_values['tarragona'])
                                 beteTaula(data_values['tarragona']);
 							});
                         
@@ -356,7 +362,7 @@
                                 d3.select(this).attr("class", "vegueriak aktibo");
                                 console.log(data_values['barcelona']);
 								d3.select("#unitate-izena").text(data_values['barcelona'].izena);
-								drawPieChart(data_values['barcelona'])
+								marraztuVegueriarenGrafikoa(data_values['barcelona'])
                                 beteTaula(data_values['barcelona']);
 							});
                         
@@ -371,7 +377,7 @@
                                 d3.select(this).attr("class", "vegueriak aktibo");
                                 console.log(data_values['lleida']);
 								d3.select("#unitate-izena").text(data_values['lleida'].izena);
-								drawPieChart(data_values['lleida'])
+								marraztuVegueriarenGrafikoa(data_values['lleida'])
                                 beteTaula(data_values['lleida']);
 							});
                         
@@ -384,7 +390,7 @@
                                 d3.select(this).attr("class", "vegueriak aktibo");
                                 console.log(data_values['central']);
 								d3.select("#unitate-izena").text(data_values['central'].izena);
-								drawPieChart(data_values['central'])
+								marraztuVegueriarenGrafikoa(data_values['central'])
                                 beteTaula(data_values['central']);
 							});
                         
@@ -437,6 +443,67 @@
                 d3.select("#ez .ehunekoak").text("%" + ((roundNumber(100 * datuak.ez / botoak_guztira, 2) < 1) ? '0' : '') + roundNumber(100 * datuak.ez / botoak_guztira, 2).toString().replace(/\./g, ','));
                 d3.select("#zuria .ehunekoak").text("%" + ((roundNumber(100 * datuak.zuria / botoak_guztira, 2) < 1) ? '0' : '') + roundNumber(100 * datuak.zuria / botoak_guztira, 2).toString().replace(/\./g, ','));
                 d3.select("#baliogabeak .ehunekoak").text("%" + ((roundNumber(100 * datuak.baliogabeak / botoak_guztira, 2) < 1) ? '0' : '') + roundNumber(100 * datuak.baliogabeak / botoak_guztira, 2).toString().replace(/\./g, ','));
+            }
+            
+            function marraztuVegueriarenGrafikoa(datuak) {
+                
+                var vegueriaren_grafikoa = c3.generate({
+                    bindto: "#vegueria-grafikoa",
+                    size: {
+                        height: 200,
+                        width: 300
+                    },
+                    legend: {
+                        hide: true
+                    },
+                    transition: {
+                        duration: 1000
+                    },
+                    data: {
+                        columns: [
+                            ["Bai", datuak.bai],
+                            ["Ez", datuak.ez],
+                            ["Zuria", datuak.zuria],
+                            ["Baliogabeak", datuak.baliogabeak]
+                        ],
+                        type: "bar",
+                        colors: {
+                            "Bai": aukerak.koloreak.bai,
+                            "Ez": aukerak.koloreak.ez,
+                            "Zuria": aukerak.koloreak.zuria,
+                            "Baliogabeak": aukerak.koloreak.baliogabeak
+                        },
+                        labels: true
+                    },
+                    axis: {
+                        x: {
+                            show: false
+                        },
+                        y: {
+                            max: (function() {
+                                var max = datuak.bai;
+
+                                if (datuak.ez > datuak.bai) {
+                                    max = datuak.ez;
+                                }
+                                return max;
+                            })(),
+                            show: false
+                        }
+                    },
+                    tooltip: {
+                        format: {
+                            title: function(d) {
+                                return d;
+                            }
+                        }
+                    },
+                    bar: {
+                        width: {
+                            ratio: 0.5
+                        }
+                    }
+                });
             }
             
 			function drawPieChart(datuak) {
