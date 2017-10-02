@@ -309,12 +309,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
                 },
                 y: {
                     max: (function() {
-                        var max = datuak.bai;
-
-                        if (datuak.ez > datuak.bai) {
-                            max = datuak.ez;
-                        }
-                        return max;
+                        return datuak.bai + datuak.ez + datuak.zuria + datuak.baliogabeak;
                     })(),
                     show: false
                 }
