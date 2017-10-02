@@ -8,6 +8,7 @@
 			
 			body {
 				font-size: 62,5%;
+                color: #333;
 			}
 			
             a {
@@ -22,6 +23,63 @@
 				position: relative;
 			}
 			
+            #bai_guztira .etiketa {
+                color: #009EE3;
+                font-size: 32px;
+            }
+            
+            #bai_guztira .ehunekoak {
+                font-size: 32px;
+            }
+            
+            #bai_guztira .botoak {
+                font-size: 28px;
+            }
+            
+            #ez_guztira .etiketa {
+                color: #E6205B;
+                font-size: 20px;
+            }
+            
+            #ez_guztira .ehunekoak {
+                font-size: 20px;
+            }
+            
+            #ez_guztira .botoak {
+                font-size: 18px;
+            }
+            
+            #zuria_guztira .etiketa {
+                color: #918B53;
+                font-size: 20px;
+            }
+            
+            #zuria_guztira .ehunekoak {
+                font-size: 20px;
+            }
+            
+            #zuria_guztira .botoak {
+                font-size: 18px;
+            }
+            
+            #baliogabeak_guztira .etiketa {
+                color: #DB9A16;
+                font-size: 20px;
+            }
+            
+            #baliogabeak_guztira .ehunekoak {
+                font-size: 20px;
+            }
+            
+            #baliogabeak_guztira .botoak {
+                font-size: 18px;
+            }
+            
+            #mapa-kontainerra {
+                position: relative;
+                margin-top: 60px;
+            }
+            
             #kredituak {
 				color: #333;
 				font-family: Arial,Helvetica,sans-serif;
@@ -125,8 +183,58 @@
             
             #vegueriak-taula {
                 margin-top: 50px;
+                margin-bottom: 50px;
             }
             
+            #vegueriak-taula th {
+                color: #fff;
+                font-size: 16px;
+                text-align: center;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                padding-right: 6px;
+                border-bottom: 1px solid #ccc;
+                border-right: 1px solid #fff;
+            }
+            
+            #vegueriak-taula th.bai {
+                background-color: #009EE3;
+            }
+            
+            #vegueriak-taula th.ez {
+                background-color: #E6205B;
+            }
+            
+            #vegueriak-taula th.zuria {
+                background-color: #918B53;
+            }
+            
+            #vegueriak-taula th.baliogabeak {
+                background-color: #DB9A16;
+                font-size: 14px;
+                border-right: none;
+            }
+            
+            #vegueriak-taula tr td:first-child {
+                font-weight: bold;
+                text-align: left;
+                border-left: 1px solid #ccc;
+                padding-left: 10px;
+            }
+            
+            #vegueriak-taula tr td {
+                border-right: 1px solid #ccc;
+                padding-right: 5px;
+                padding-left: 5px;
+            }
+            
+            #vegueriak-taula tr td {
+                font-size: 13px;
+                text-align: right;
+                border-bottom: 1px solid #ccc;
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
 		</style>
         <script type="text/javascript">
 
@@ -185,53 +293,55 @@
                     <div class="botoak"></div>
                 </div>
             </div>
-			<div id="kredituak">
-				<a href="http://www.argia.eus"><img id="mapa-argia-logoa" src="http://www.argia.eus/template/images/argia.jpg"></a>
-                <a target="_blank" href="http://www.iametza.eus"><img id="mapa-iametza-logoa" src="img/iametza.png"></a>
-				<div>
-				  Infografia: <strong>Asier Iturralde Sarasola</strong>&nbsp;<a href="http://www.twitter.com/aldatsa">@aldatsa</a>
-				</div>
-				<div>
-					Datuak: Kataluniako Generalitatea
-				</div>
-			</div>
-			<div id="mapa"></div>
-			<div id="unitate-izena">Barcelona</div>
-			<table id="datuak">
-				<tr id="bai">
-					<td class="kolorea" style="background-color: #009EE3"></td>
-					<td class="mota">Bai</td>
-					<td class="botoak">1.222.721</td>
-					<td class="ehunekoak">%89,81</td>
-				</tr>
-				<tr id="ez">
-					<td class="kolorea" style="background-color: #E6205B"></td>
-					<td class="mota">Ez</td>
-					<td class="botoak">138.031</td>
-					<td class="ehunekoak">%10,14</td>
-				</tr>
-				<tr id="zuria">
-					<td class="kolorea" style="background-color: #918B53"></td>
-					<td class="mota">Zuria</td>
-					<td class="botoak">34.156</td>
-					<td class="ehunekoak">%0,3</td>
-				</tr>
-				<tr id="baliogabeak">
-					<td class="kolorea" style="background-color: #DB9A16"></td>
-					<td class="mota">Baliogabeak</td>
-					<td class="botoak">14.626</td>
-					<td class="ehunekoak">%0,2</td>
-				</tr>
-			</table>
-			<!--<div id="tarta"></div>-->
-            <div id="vegueria-grafikoa"></div>
-            <table id="vegueriak-taula">
+            <div id="mapa-kontainerra">
+                <div id="kredituak">
+                    <a href="http://www.argia.eus"><img id="mapa-argia-logoa" src="http://www.argia.eus/template/images/argia.jpg"></a>
+                    <a target="_blank" href="http://www.iametza.eus"><img id="mapa-iametza-logoa" src="img/iametza.png"></a>
+                    <div>
+                      Infografia: <strong>Asier Iturralde Sarasola</strong>&nbsp;<a href="http://www.twitter.com/aldatsa">@aldatsa</a>
+                    </div>
+                    <div>
+                        Datuak: Kataluniako Generalitatea
+                    </div>
+                </div>
+                <div id="mapa"></div>
+                <div id="unitate-izena">Barcelona</div>
+                <table id="datuak">
+                    <tr id="bai">
+                        <td class="kolorea" style="background-color: #009EE3"></td>
+                        <td class="mota">Bai</td>
+                        <td class="botoak">1.222.721</td>
+                        <td class="ehunekoak">%89,81</td>
+                    </tr>
+                    <tr id="ez">
+                        <td class="kolorea" style="background-color: #E6205B"></td>
+                        <td class="mota">Ez</td>
+                        <td class="botoak">138.031</td>
+                        <td class="ehunekoak">%10,14</td>
+                    </tr>
+                    <tr id="zuria">
+                        <td class="kolorea" style="background-color: #918B53"></td>
+                        <td class="mota">Zuria</td>
+                        <td class="botoak">34.156</td>
+                        <td class="ehunekoak">%0,3</td>
+                    </tr>
+                    <tr id="baliogabeak">
+                        <td class="kolorea" style="background-color: #DB9A16"></td>
+                        <td class="mota">Baliogabeak</td>
+                        <td class="botoak">14.626</td>
+                        <td class="ehunekoak">%0,2</td>
+                    </tr>
+                </table>
+                <!--<div id="tarta"></div>-->
+                <div id="vegueria-grafikoa"></div>
+            </div>
+            <table id="vegueriak-taula" cellspacing="0">
                 <tr class="goiburua">
                     <th></th>
-                    <th class="bai">Bai</td>
-                    <td class="ez">Ez</td>
-                    <td class="zuria">Zuriak</td>
-                    <td class="baliogabeak">Baliogabeak</td>
+                    <th class="bai">Bai</th>
+                    <th class="ez">Ez</th>
+                    <th class="zuria">Zuriak</th>
+                    <th class="baliogabeak">Baliogabeak</th>
                 </tr>
             </table>
 		</div>
