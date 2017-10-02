@@ -1,5 +1,30 @@
 document.addEventListener("DOMContentLoaded", function(e) {
 
+    function eskalatu() {
+
+        var jatorrizko_zabalera = 680;
+        var zabalera = window.innerWidth;
+        var altuera = window.innerHeight;
+
+        var eskala = 1;
+
+        // Pantailaren zabalera maparena baino txikiagoa bada.
+        if (zabalera < jatorrizko_zabalera) {
+
+            // Eskala kalkulatu.
+            eskala = zabalera / jatorrizko_zabalera - 0.04;
+
+        }
+
+        document.getElementById("kontainerra").style["transform-origin"] = "top left";
+        document.getElementById("kontainerra").style.transform = "scale(" + eskala + ")";
+
+        return eskala;
+
+    }
+    
+    var eskala = eskalatu();
+
     var width = 400,
         height = 400;
 

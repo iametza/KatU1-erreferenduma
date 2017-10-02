@@ -22,12 +22,13 @@ a {
 #kontainerra {
     margin: 0 auto 0 auto;
     width: 666px;
-    /*border: 1px solid black;*/
+    border: 1px solid black;
     position: relative;
 }
 
 #guztira-taula {
     position: relative;
+    text-align: center;
 }
 
 #bai_guztira {
