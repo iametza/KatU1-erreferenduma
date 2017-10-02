@@ -15,9 +15,21 @@ a {
     position: relative;
 }
 
+#guztira-taula {
+    position: relative;
+}
+
+#bai_guztira {
+    position: absolute;
+    top: 90px;
+    text-align: center;
+    left: 30px;
+}
+
 #bai_guztira .etiketa {
     color: #009EE3;
     font-size: 32px;
+    font-weight: bold;
 }
 
 #bai_guztira .ehunekoak {
@@ -28,9 +40,17 @@ a {
     font-size: 28px;
 }
 
+#ez_guztira {
+    position: absolute;
+    top: 25px;
+    right: 68px;
+    text-align: center;
+}
+
 #ez_guztira .etiketa {
     color: #E6205B;
     font-size: 20px;
+    font-weight: bold;
 }
 
 #ez_guztira .ehunekoak {
@@ -41,9 +61,17 @@ a {
     font-size: 18px;
 }
 
+#zuria_guztira {
+    position: absolute;
+    top: 125px;
+    right: 65px;
+    text-align: center;
+}
+
 #zuria_guztira .etiketa {
     color: #918B53;
     font-size: 20px;
+    font-weight: bold;
 }
 
 #zuria_guztira .ehunekoak {
@@ -54,9 +82,17 @@ a {
     font-size: 18px;
 }
 
+#baliogabeak_guztira {
+    position: absolute;
+    top: 218px;
+    text-align: center;
+    right: 36px;
+}
+
 #baliogabeak_guztira .etiketa {
     color: #DB9A16;
     font-size: 20px;
+    font-weight: bold;
 }
 
 #baliogabeak_guztira .ehunekoak {
@@ -65,6 +101,12 @@ a {
 
 #baliogabeak_guztira .botoak {
     font-size: 18px;
+}
+
+#guztira-donuts-grafikoa {
+    background-image: url("../img/hautetsontzia.jpg");
+    background-repeat: no-repeat;
+    background-position: 51% 47%;
 }
 
 #mapa-kontainerra {

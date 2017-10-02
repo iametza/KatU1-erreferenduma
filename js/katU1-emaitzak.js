@@ -107,6 +107,14 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
                 beteGuztiraTaula(data_values);
 
+                marraztuGuztiraDonutsa({
+                    "botoak_guztira": botoak_guztira,
+                    "bai": bai_guztira,
+                    "ez": ez_guztira,
+                    "zuria": zuria_guztira,
+                    "baliogabeak": baliogabeak_guztira
+                });
+
                 beteVegueriakTaula(data_values);
 
                 marraztuVegueriarenGrafikoa(data_values['barcelona']);
@@ -264,6 +272,34 @@ document.addEventListener("DOMContentLoaded", function(e) {
         d3.select("#ez_guztira .ehunekoak").text("%" + kalkulatuEhunekoa(ez_guztira, botoak_guztira, 2));
         d3.select("#zuria_guztira .ehunekoak").text("%" + kalkulatuEhunekoa(zuria_guztira, botoak_guztira, 2));
         d3.select("#baliogabeak_guztira .ehunekoak").text("%" + kalkulatuEhunekoa(baliogabeak_guztira, botoak_guztira, 2));
+    }
+
+    function marraztuGuztiraDonutsa(datuak) {
+
+        var chart = c3.generate({
+            bindto: "#guztira-donuts-grafikoa",
+            data: {
+                columns: [
+                    ["Bai", datuak.bai],
+                    ["Ez", datuak.ez],
+                    ["Zuriak", datuak.zuria],
+                    ["Baliogabeak", datuak.baliogabeak]
+                ],
+                type : 'donut',
+                colors: {
+                    "Bai": aukerak.koloreak.bai,
+                    "Ez": aukerak.koloreak.ez,
+                    "Zuriak": aukerak.koloreak.zuria,
+                    "Baliogabeak": aukerak.koloreak.baliogabeak
+                },
+                onclick: function (d, i) { console.log("onclick", d, i); },
+                onmouseover: function (d, i) { console.log("onmouseover", d, i); },
+                onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+            },
+            donut: {
+                title: ""
+            }
+        });
     }
 
     function marraztuVegueriarenGrafikoa(datuak) {
