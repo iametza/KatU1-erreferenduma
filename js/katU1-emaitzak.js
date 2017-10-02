@@ -58,6 +58,12 @@ document.addEventListener("DOMContentLoaded", function(e) {
         }
     };
 
+    var botoak_guztira = 0;
+    var bai_guztira = 0;
+    var ez_guztira = 0;
+    var zuria_guztira = 0;
+    var baliogabeak_guztira = 0;
+
     //marraztuKataluniakoMapa("udalerriak");
     marraztuKataluniakoMapa("eskualdeak");
     //marraztuKataluniakoMapa("vegueriak");
@@ -83,6 +89,22 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
                 if (error) return console.error(error);
 
+                for (var vegueria in data_values) {
+
+                    data_values[vegueria].botoak_guztira = data_values[vegueria].bai + data_values[vegueria].ez + data_values[vegueria].zuria + data_values[vegueria].baliogabeak;
+
+                    botoak_guztira = botoak_guztira + data_values[vegueria].botoak_guztira;
+                    bai_guztira = bai_guztira + data_values[vegueria].bai;
+                    ez_guztira = ez_guztira + data_values[vegueria].ez;
+                    zuria_guztira = zuria_guztira + data_values[vegueria].zuria;
+                    baliogabeak_guztira = baliogabeak_guztira + data_values[vegueria].baliogabeak;
+
+                    data_values[vegueria].bai_ehunekoa = kalkulatuEhunekoa(data_values[vegueria].bai, data_values[vegueria].botoak_guztira, 2);
+                    data_values[vegueria].ez_ehunekoa = kalkulatuEhunekoa(data_values[vegueria].ez, data_values[vegueria].botoak_guztira, 2);
+                    data_values[vegueria].zuria_ehunekoa = kalkulatuEhunekoa(data_values[vegueria].zuria, data_values[vegueria].botoak_guztira, 2);
+                    data_values[vegueria].baliogabeak_ehunekoa = kalkulatuEhunekoa(data_values[vegueria].baliogabeak, data_values[vegueria].botoak_guztira, 2);
+                }
+
                 beteGuztiraTaula(data_values);
 
                 beteVegueriakTaula(data_values);
@@ -99,7 +121,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
                         d3.select(this).attr("class", "vegueriak aktibo");
                         d3.select("#unitate-izena").text(data_values['girona'].izena);
                         marraztuVegueriarenGrafikoa(data_values['girona']);
-                        beteTaula(data_values['girona']);
+                        beteTaula(data_values, 'girona');
                     });
 
                 svg.append("path")
@@ -112,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
                         console.log(data_values['alt pirineu i aran']);
                         d3.select("#unitate-izena").text(data_values['alt pirineu i aran'].izena);
                         marraztuVegueriarenGrafikoa(data_values['alt pirineu i aran']);
-                        beteTaula(data_values['alt pirineu i aran']);
+                        beteTaula(data_values, 'alt pirineu i aran');
                     });
 
                 svg.append("path")
@@ -125,7 +147,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
                         console.log(data_values['terres de l"ebre']);
                         d3.select("#unitate-izena").text(data_values['terres de l"ebre'].izena);
                         marraztuVegueriarenGrafikoa(data_values['terres de l"ebre']);
-                        beteTaula(data_values['terres de l"ebre']);
+                        beteTaula(data_values, 'terres de l"ebre');
                     });
 
                 svg.append("path")
@@ -138,7 +160,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
                         console.log(data_values['tarragona']);
                         d3.select("#unitate-izena").text(data_values['tarragona'].izena);
                         marraztuVegueriarenGrafikoa(data_values['tarragona']);
-                        beteTaula(data_values['tarragona']);
+                        beteTaula(data_values, 'tarragona');
                     });
 
                 svg.append("path")
@@ -151,7 +173,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
                         console.log(data_values['barcelona']);
                         d3.select("#unitate-izena").text(data_values['barcelona'].izena);
                         marraztuVegueriarenGrafikoa(data_values['barcelona']);
-                        beteTaula(data_values['barcelona']);
+                        beteTaula(data_values, 'barcelona');
                     });
 
                 svg.append("path")
@@ -164,7 +186,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
                         console.log(data_values['lleida']);
                         d3.select("#unitate-izena").text(data_values['lleida'].izena);
                         marraztuVegueriarenGrafikoa(data_values['lleida']);
-                        beteTaula(data_values['lleida']);
+                        beteTaula(data_values, "lleida");
                     });
 
                 svg.append("path")
@@ -177,7 +199,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
                         console.log(data_values['central']);
                         d3.select("#unitate-izena").text(data_values['central'].izena);
                         marraztuVegueriarenGrafikoa(data_values['central']);
-                        beteTaula(data_values['central']);
+                        beteTaula(data_values, "central");
                     });
 
                 /*
@@ -196,39 +218,17 @@ document.addEventListener("DOMContentLoaded", function(e) {
         });
     }
 
-    /**
-    * Function that could be used to round a number to a given decimal points. Returns the answer
-    * Arguments :  number - The number that must be rounded
-    *				decimal_points - The number of decimal points that should appear in the result
-    */
-   function roundNumber(number,decimal_points) {
-       if(!decimal_points) return Math.round(number);
-       if(number == 0) {
-           var decimals = "";
-           for(var i=0;i<decimal_points;i++) decimals += "0";
-           return "0."+decimals;
-       }
+    function beteTaula(datuak, vegueria) {
 
-       var exponent = Math.pow(10,decimal_points);
-       var num = Math.round((number * exponent)).toString();
+        d3.select("#bai .botoak").text(datuak[vegueria].bai.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+        d3.select("#ez .botoak").text(datuak[vegueria].ez.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+        d3.select("#zuria .botoak").text(datuak[vegueria].zuria.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+        d3.select("#baliogabeak .botoak").text(datuak[vegueria].baliogabeak.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
 
-       return num.slice(0,-1*decimal_points) + "." + num.slice(-1*decimal_points)
-   }
-
-    function beteTaula(datuak) {
-
-        var botoak_guztira = datuak.bai + datuak.ez + datuak.zuria + datuak.baliogabeak;
-        //var botoak_guztira = datuak.baibai + datuak.baiez + datuak.baizuria + datuak.ez + datuak.zuria;
-
-        d3.select("#bai .botoak").text(datuak.bai.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
-        d3.select("#ez .botoak").text(datuak.ez.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
-        d3.select("#zuria .botoak").text(datuak.zuria.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
-        d3.select("#baliogabeak .botoak").text(datuak.baliogabeak.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
-
-        d3.select("#bai .ehunekoak").text("%" + ((roundNumber(100 * datuak.bai / botoak_guztira, 2) < 1) ? '0' : '') + roundNumber(100 * datuak.bai / botoak_guztira, 2).toString().replace(/\./g, ','));
-        d3.select("#ez .ehunekoak").text("%" + ((roundNumber(100 * datuak.ez / botoak_guztira, 2) < 1) ? '0' : '') + roundNumber(100 * datuak.ez / botoak_guztira, 2).toString().replace(/\./g, ','));
-        d3.select("#zuria .ehunekoak").text("%" + ((roundNumber(100 * datuak.zuria / botoak_guztira, 2) < 1) ? '0' : '') + roundNumber(100 * datuak.zuria / botoak_guztira, 2).toString().replace(/\./g, ','));
-        d3.select("#baliogabeak .ehunekoak").text("%" + ((roundNumber(100 * datuak.baliogabeak / botoak_guztira, 2) < 1) ? '0' : '') + roundNumber(100 * datuak.baliogabeak / botoak_guztira, 2).toString().replace(/\./g, ','));
+        d3.select("#bai .ehunekoak").text("%" + datuak[vegueria].bai_ehunekoa);
+        d3.select("#ez .ehunekoak").text("%" + datuak[vegueria].ez_ehunekoa);
+        d3.select("#zuria .ehunekoak").text("%" + datuak[vegueria].zuria_ehunekoa);
+        d3.select("#baliogabeak .ehunekoak").text("%" + datuak[vegueria].baliogabeak_ehunekoa);
     }
 
     function beteVegueriakTaula(datuak) {
@@ -237,15 +237,13 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
         for (var vegueria in datuak) {
 
-            var guztira = datuak[vegueria].bai + datuak[vegueria].ez + datuak[vegueria].zuria + datuak[vegueria].baliogabeak;
-
             katea = katea +
                 "<tr>" +
                     "<td>" + datuak[vegueria].izena + "</td>" +
-                    "<td>" + datuak[vegueria].bai.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " (%" + kalkulatuEhunekoa(datuak[vegueria].bai, guztira, 2) + ")" + "</td>" +
-                    "<td>" + datuak[vegueria].ez.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " (%" + kalkulatuEhunekoa(datuak[vegueria].ez, guztira, 2) + ")" + "</td>" +
-                    "<td>" + datuak[vegueria].zuria.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " (%" + kalkulatuEhunekoa(datuak[vegueria].zuria, guztira, 2) + ")" + "</td>" +
-                    "<td>" + datuak[vegueria].baliogabeak.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " (%" + kalkulatuEhunekoa(datuak[vegueria].baliogabeak, guztira, 2) + ")" + "</td>" +
+                    "<td>" + datuak[vegueria].bai.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " (%" + datuak[vegueria].bai_ehunekoa + ")" + "</td>" +
+                    "<td>" + datuak[vegueria].ez.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " (%" + datuak[vegueria].ez_ehunekoa + ")" + "</td>" +
+                    "<td>" + datuak[vegueria].zuria.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " (%" + datuak[vegueria].zuria_ehunekoa + ")" + "</td>" +
+                    "<td>" + datuak[vegueria].baliogabeak.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " (%" + datuak[vegueria].baliogabeak_ehunekoa + ")" + "</td>" +
                 "</tr>";
         }
 
@@ -257,35 +255,19 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
     function beteGuztiraTaula(datuak) {
 
-        var botoak_guztira = 0;
-        var bai_guztira = 0;
-        var ez_guztira = 0;
-        var zuria_guztira = 0;
-        var baliogabeak_guztira = 0;
-
-        for (var vegueria in datuak) {
-
-            botoak_guztira = botoak_guztira + datuak[vegueria].bai + datuak[vegueria].ez + datuak[vegueria].zuria + datuak[vegueria].baliogabeak;
-            bai_guztira = bai_guztira + datuak[vegueria].bai;
-            ez_guztira = ez_guztira + datuak[vegueria].ez;
-            zuria_guztira = zuria_guztira + datuak[vegueria].zuria;
-            baliogabeak_guztira = baliogabeak_guztira + datuak[vegueria].baliogabeak;
-
-        }
-
         d3.select("#bai_guztira .botoak").text(bai_guztira.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
         d3.select("#ez_guztira .botoak").text(ez_guztira.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
         d3.select("#zuria_guztira .botoak").text(zuria_guztira.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
         d3.select("#baliogabeak_guztira .botoak").text(baliogabeak_guztira.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
 
-        d3.select("#bai_guztira .ehunekoak").text("%" + ((roundNumber(100 * bai_guztira / botoak_guztira, 2) < 1) ? '0' : '') + roundNumber(100 * bai_guztira / botoak_guztira, 2).toString().replace(/\./g, ','));
-        d3.select("#ez_guztira .ehunekoak").text("%" + ((roundNumber(100 * ez_guztira / botoak_guztira, 2) < 1) ? '0' : '') + roundNumber(100 * ez_guztira / botoak_guztira, 2).toString().replace(/\./g, ','));
-        d3.select("#zuria_guztira .ehunekoak").text("%" + ((roundNumber(100 * zuria_guztira / botoak_guztira, 2) < 1) ? '0' : '') + roundNumber(100 * zuria_guztira / botoak_guztira, 2).toString().replace(/\./g, ','));
-        d3.select("#baliogabeak_guztira .ehunekoak").text("%" + ((roundNumber(100 * baliogabeak_guztira / botoak_guztira, 2) < 1) ? '0' : '') + roundNumber(100 * baliogabeak_guztira / botoak_guztira, 2).toString().replace(/\./g, ','));
+        d3.select("#bai_guztira .ehunekoak").text("%" + kalkulatuEhunekoa(bai_guztira, botoak_guztira, 2));
+        d3.select("#ez_guztira .ehunekoak").text("%" + kalkulatuEhunekoa(ez_guztira, botoak_guztira, 2));
+        d3.select("#zuria_guztira .ehunekoak").text("%" + kalkulatuEhunekoa(zuria_guztira, botoak_guztira, 2));
+        d3.select("#baliogabeak_guztira .ehunekoak").text("%" + kalkulatuEhunekoa(baliogabeak_guztira, botoak_guztira, 2));
     }
 
     function marraztuVegueriarenGrafikoa(datuak) {
-        
+
         var vegueriaren_grafikoa = c3.generate({
             bindto: "#vegueria-grafikoa",
             size: {
@@ -302,20 +284,22 @@ document.addEventListener("DOMContentLoaded", function(e) {
                 columns: [
                     ["Bai", datuak.bai],
                     ["Ez", datuak.ez],
-                    ["Zuria", datuak.zuria],
+                    ["Zuriak", datuak.zuria],
                     ["Baliogabeak", datuak.baliogabeak]
                 ],
                 type: "bar",
                 colors: {
                     "Bai": aukerak.koloreak.bai,
                     "Ez": aukerak.koloreak.ez,
-                    "Zuria": aukerak.koloreak.zuria,
+                    "Zuriak": aukerak.koloreak.zuria,
                     "Baliogabeak": aukerak.koloreak.baliogabeak
                 },
                 labels: {
                     format: {
-                        data1: d3.format('$')
-    //                  data1: function (v, id, i, j) { return "Format for data1"; },
+                        "Bai": function (v, id, i, j) { return "%" + datuak.bai_ehunekoa; },
+                        "Ez": function (v, id, i, j) { return "%" + datuak.ez_ehunekoa; },
+                        "Zuriak": function (v, id, i, j) { return "%" + datuak.zuria_ehunekoa; },
+                        "Baliogabeak": function (v, id, i, j) { return "%" + datuak.baliogabeak_ehunekoa; }
                     }
                 }
             },
