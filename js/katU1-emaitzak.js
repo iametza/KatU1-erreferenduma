@@ -88,23 +88,6 @@ document.addEventListener("DOMContentLoaded", function(e) {
                 beteVegueriakTaula(data_values);
 
                 marraztuVegueriarenGrafikoa(data_values['barcelona']);
-                
-                /*svg.selectAll("." + mota)
-                    .data(topojson.feature(cat, cat.objects[mota]).features)
-                    .enter().append("path")
-                    .attr("class", mota)
-                    .attr("id", function(d) {
-                        return mota + "_" + d.properties[propietateen_izenak[mota].id];
-                    })
-                    .attr("d", path)
-                    .on("mouseover", function(d) {
-                        //console.log(data_values[parseInt(d.properties[propietateen_izenak[mota].id], 10) - 1].Catalan);
-                        d3.select("#unitate-izena").text(d.properties[propietateen_izenak[mota].izena]);
-                        console.log(d.properties[propietateen_izenak[mota].id]);
-                        //drawPieChart(data_values[parseInt(d.properties[propietateen_izenak[mota].id], 10) - 1].Catalan);
-                        drawPieChart(probatarako_datuak);
-                    });
-                */
 
                 svg.append("path")
                     .datum(topojson.merge(cat, cat.objects.eskualdeak.geometries.filter(function(d) { return vegueriak['girona'].has(d.properties.comarca); })))
@@ -170,8 +153,6 @@ document.addEventListener("DOMContentLoaded", function(e) {
                         marraztuVegueriarenGrafikoa(data_values['barcelona']);
                         beteTaula(data_values['barcelona']);
                     });
-
-                drawPieChart(data_values['barcelona']);
 
                 svg.append("path")
                     .datum(topojson.merge(cat, cat.objects.eskualdeak.geometries.filter(function(d) { return vegueriak['lleida'].has(d.properties.comarca); })))
@@ -349,73 +330,12 @@ document.addEventListener("DOMContentLoaded", function(e) {
                     show: false
                 }
             },
-            tooltip: {
-                format: {
-                    title: function(d) {
-                        return d;
-                    }
-                }
-            },
+            tooltip: false,
             bar: {
                 width: {
                     ratio: 0.5
                 }
             }
         });
-    }
-
-    function drawPieChart(datuak) {
-        var w = 150;
-        var h = 150;
-        var r = h/2;
-        var color = ["#FF7F02", 	// Bai
-                     "#5AC8D5",		// Ez
-                     "#D86969",		// Zuria
-                     "#95AA62"]; 	// Baliogabeak
-
-        var data = [{"label": "Bai",
-                     "value": datuak.bai},
-                    {"label":"Ez",
-                     "value": datuak.ez},
-                    {"label":"Zuria",
-                     "value": datuak.zuria},
-                    {"label":"Baliogabeak",
-                     "value": datuak.baliogabeak}];
-
-
-        d3.select("#tarta svg").remove();
-
-        var vis = d3.select('#tarta')
-                    .append("svg:svg")
-                    .data([data])
-                    .attr("width", w)
-                    .attr("height", h)
-                    .append("svg:g")
-                    .attr("transform", "translate(" + r + "," + r + ")");
-
-        var pie = d3.layout.pie().value(function(d){return d.value;});
-
-        // declare an arc generator function
-        var arc = d3.svg.arc().outerRadius(r);
-
-        // select paths, use arc generator to draw
-        var arcs = vis.selectAll("g.slice").data(pie).enter().append("svg:g").attr("class", "slice");
-        arcs.append("svg:path")
-            .attr("fill", function(d, i){
-                return color[i];
-            })
-            .attr("d", function (d) {
-                // log the result of the arc generator to show how cool it is :)
-                //console.log(arc(d));
-                return arc(d);
-            });
-
-        // add the text
-        /*arcs.append("svg:text").attr("transform", function(d){
-                    d.innerRadius = 0;
-                    d.outerRadius = r;
-                    return "translate(" + arc.centroid(d) + ")";}).attr("text-anchor", "middle").text( function(d, i) {
-                        return data[i].label;
-                    });*/
     }
 });
