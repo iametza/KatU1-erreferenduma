@@ -285,12 +285,12 @@ document.addEventListener("DOMContentLoaded", function(e) {
     }
 
     function marraztuVegueriarenGrafikoa(datuak) {
-
+        
         var vegueriaren_grafikoa = c3.generate({
             bindto: "#vegueria-grafikoa",
             size: {
                 height: 200,
-                width: 300
+                width: 400
             },
             legend: {
                 hide: true
@@ -312,7 +312,12 @@ document.addEventListener("DOMContentLoaded", function(e) {
                     "Zuria": aukerak.koloreak.zuria,
                     "Baliogabeak": aukerak.koloreak.baliogabeak
                 },
-                labels: true
+                labels: {
+                    format: {
+                        data1: d3.format('$')
+    //                  data1: function (v, id, i, j) { return "Format for data1"; },
+                    }
+                }
             },
             axis: {
                 x: {
@@ -330,7 +335,9 @@ document.addEventListener("DOMContentLoaded", function(e) {
                     show: false
                 }
             },
-            tooltip: false,
+            tooltip: {
+                show: false
+            },
             bar: {
                 width: {
                     ratio: 0.5
