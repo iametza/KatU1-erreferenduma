@@ -64,10 +64,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
     var zuria_guztira = 0;
     var baliogabeak_guztira = 0;
 
-    //marraztuKataluniakoMapa("udalerriak");
     marraztuKataluniakoMapa("eskualdeak");
-    //marraztuKataluniakoMapa("vegueriak");
-    //marraztuKataluniakoMapa("probintziak");
 
     function kalkulatuEhunekoa(balioa, guztira, hamartarrak) {
 
@@ -79,13 +76,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
         d3.json("datuak/vegueriak.json", function(error, data_values) {
 
-            //console.log(data_values);
-            //if (error) return console.error(error);
-            console.log(error);
-
             d3.json("topoJSON/" + mota + ".topo.json", function(error, cat) {
-
-                console.log(cat);
 
                 if (error) return console.error(error);
 
@@ -99,10 +90,10 @@ document.addEventListener("DOMContentLoaded", function(e) {
                     zuria_guztira = zuria_guztira + data_values[vegueria].zuria;
                     baliogabeak_guztira = baliogabeak_guztira + data_values[vegueria].baliogabeak;
 
-                    data_values[vegueria].bai_ehunekoa = kalkulatuEhunekoa(data_values[vegueria].bai, data_values[vegueria].botoak_guztira, 2);
-                    data_values[vegueria].ez_ehunekoa = kalkulatuEhunekoa(data_values[vegueria].ez, data_values[vegueria].botoak_guztira, 2);
-                    data_values[vegueria].zuria_ehunekoa = kalkulatuEhunekoa(data_values[vegueria].zuria, data_values[vegueria].botoak_guztira, 2);
-                    data_values[vegueria].baliogabeak_ehunekoa = kalkulatuEhunekoa(data_values[vegueria].baliogabeak, data_values[vegueria].botoak_guztira, 2);
+                    data_values[vegueria].bai_ehunekoa = kalkulatuEhunekoa(data_values[vegueria].bai, data_values[vegueria].botoak_guztira - data_values[vegueria].baliogabeak, 2);
+                    data_values[vegueria].ez_ehunekoa = kalkulatuEhunekoa(data_values[vegueria].ez, data_values[vegueria].botoak_guztira - data_values[vegueria].baliogabeak, 2);
+                    data_values[vegueria].zuria_ehunekoa = kalkulatuEhunekoa(data_values[vegueria].zuria, data_values[vegueria].botoak_guztira - data_values[vegueria].baliogabeak, 2);
+                    data_values[vegueria].baliogabeak_ehunekoa = kalkulatuEhunekoa(data_values[vegueria].baliogabeak, data_values[vegueria].botoak_guztira - data_values[vegueria].baliogabeak, 2);
                 }
 
                 beteGuztiraTaula(data_values);
@@ -139,7 +130,6 @@ document.addEventListener("DOMContentLoaded", function(e) {
                     .on("mouseover", function(d) {
                         d3.selectAll(".vegueriak").attr("class", "vegueriak");
                         d3.select(this).attr("class", "vegueriak aktibo");
-                        console.log(data_values['alt pirineu i aran']);
                         d3.select("#unitate-izena").text(data_values['alt pirineu i aran'].izena);
                         marraztuVegueriarenGrafikoa(data_values['alt pirineu i aran']);
                         beteTaula(data_values, 'alt pirineu i aran');
@@ -152,7 +142,6 @@ document.addEventListener("DOMContentLoaded", function(e) {
                     .on("mouseover", function(d) {
                         d3.selectAll(".vegueriak").attr("class", "vegueriak");
                         d3.select(this).attr("class", "vegueriak aktibo");
-                        console.log(data_values['terres de l"ebre']);
                         d3.select("#unitate-izena").text(data_values['terres de l"ebre'].izena);
                         marraztuVegueriarenGrafikoa(data_values['terres de l"ebre']);
                         beteTaula(data_values, 'terres de l"ebre');
@@ -165,7 +154,6 @@ document.addEventListener("DOMContentLoaded", function(e) {
                     .on("mouseover", function(d) {
                         d3.selectAll(".vegueriak").attr("class", "vegueriak");
                         d3.select(this).attr("class", "vegueriak aktibo");
-                        console.log(data_values['tarragona']);
                         d3.select("#unitate-izena").text(data_values['tarragona'].izena);
                         marraztuVegueriarenGrafikoa(data_values['tarragona']);
                         beteTaula(data_values, 'tarragona');
@@ -178,7 +166,6 @@ document.addEventListener("DOMContentLoaded", function(e) {
                     .on("mouseover", function(d) {
                         d3.selectAll(".vegueriak").attr("class", "vegueriak");
                         d3.select(this).attr("class", "vegueriak aktibo");
-                        console.log(data_values['barcelona']);
                         d3.select("#unitate-izena").text(data_values['barcelona'].izena);
                         marraztuVegueriarenGrafikoa(data_values['barcelona']);
                         beteTaula(data_values, 'barcelona');
@@ -191,7 +178,6 @@ document.addEventListener("DOMContentLoaded", function(e) {
                     .on("mouseover", function(d) {
                         d3.selectAll(".vegueriak").attr("class", "vegueriak");
                         d3.select(this).attr("class", "vegueriak aktibo");
-                        console.log(data_values['lleida']);
                         d3.select("#unitate-izena").text(data_values['lleida'].izena);
                         marraztuVegueriarenGrafikoa(data_values['lleida']);
                         beteTaula(data_values, "lleida");
@@ -204,7 +190,6 @@ document.addEventListener("DOMContentLoaded", function(e) {
                     .on("mouseover", function(d) {
                         d3.selectAll(".vegueriak").attr("class", "vegueriak");
                         d3.select(this).attr("class", "vegueriak aktibo");
-                        console.log(data_values['central']);
                         d3.select("#unitate-izena").text(data_values['central'].izena);
                         marraztuVegueriarenGrafikoa(data_values['central']);
                         beteTaula(data_values, "central");
@@ -268,9 +253,9 @@ document.addEventListener("DOMContentLoaded", function(e) {
         d3.select("#zuria_guztira .botoak").text(zuria_guztira.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
         d3.select("#baliogabeak_guztira .botoak").text(baliogabeak_guztira.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
 
-        d3.select("#bai_guztira .ehunekoak").text("%" + kalkulatuEhunekoa(bai_guztira, botoak_guztira, 2));
-        d3.select("#ez_guztira .ehunekoak").text("%" + kalkulatuEhunekoa(ez_guztira, botoak_guztira, 2));
-        d3.select("#zuria_guztira .ehunekoak").text("%" + kalkulatuEhunekoa(zuria_guztira, botoak_guztira, 2));
+        d3.select("#bai_guztira .ehunekoak").text("%" + kalkulatuEhunekoa(bai_guztira, botoak_guztira - baliogabeak_guztira, 2));
+        d3.select("#ez_guztira .ehunekoak").text("%" + kalkulatuEhunekoa(ez_guztira, botoak_guztira - baliogabeak_guztira, 2));
+        d3.select("#zuria_guztira .ehunekoak").text("%" + kalkulatuEhunekoa(zuria_guztira, botoak_guztira - baliogabeak_guztira, 2));
         d3.select("#baliogabeak_guztira .ehunekoak").text("%" + kalkulatuEhunekoa(baliogabeak_guztira, botoak_guztira, 2));
     }
 
@@ -291,10 +276,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
                     "Ez": aukerak.koloreak.ez,
                     "Zuriak": aukerak.koloreak.zuria,
                     "Baliogabeak": aukerak.koloreak.baliogabeak
-                },
-                onclick: function (d, i) { console.log("onclick", d, i); },
-                onmouseover: function (d, i) { console.log("onmouseover", d, i); },
-                onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+                }
             },
             donut: {
                 title: ""
