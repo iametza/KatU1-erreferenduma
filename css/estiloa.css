@@ -1,0 +1,229 @@
+body {
+    font-size: 62,5%;
+    color: #333;
+}
+
+a {
+    color: #e50100;
+    text-decoration: none;
+}
+
+#kontainerra {
+    margin: 0 auto 0 auto;
+    width: 666px;
+    /*border: 1px solid black;*/
+    position: relative;
+}
+
+#bai_guztira .etiketa {
+    color: #009EE3;
+    font-size: 32px;
+}
+
+#bai_guztira .ehunekoak {
+    font-size: 32px;
+}
+
+#bai_guztira .botoak {
+    font-size: 28px;
+}
+
+#ez_guztira .etiketa {
+    color: #E6205B;
+    font-size: 20px;
+}
+
+#ez_guztira .ehunekoak {
+    font-size: 20px;
+}
+
+#ez_guztira .botoak {
+    font-size: 18px;
+}
+
+#zuria_guztira .etiketa {
+    color: #918B53;
+    font-size: 20px;
+}
+
+#zuria_guztira .ehunekoak {
+    font-size: 20px;
+}
+
+#zuria_guztira .botoak {
+    font-size: 18px;
+}
+
+#baliogabeak_guztira .etiketa {
+    color: #DB9A16;
+    font-size: 20px;
+}
+
+#baliogabeak_guztira .ehunekoak {
+    font-size: 20px;
+}
+
+#baliogabeak_guztira .botoak {
+    font-size: 18px;
+}
+
+#mapa-kontainerra {
+    position: relative;
+    margin-top: 60px;
+}
+
+#kredituak {
+    color: #333;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 11px;
+    left: 140px;
+    position: absolute;
+    top: 420px;
+    width: 250px;
+}
+
+#mapa-argia-logoa {
+    width: 100px;
+}
+
+#mapa-iametza-logoa {
+    width: 100px;
+    margin-left: 15px;
+}
+
+#mapa {
+    display: inline-block;
+}
+
+#unitate-izena {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 450px;
+    color: #777777;
+    font-size: 2em;
+    text-align: center;
+}
+
+.udalerriak, .eskualdeak, .probintziak, .vegueriak {
+    fill: #eee;
+    stroke: #777;
+    stroke-dasharray: 2,2;
+    stroke-linejoin: round;
+}
+
+.udalerriak.aktibo, .eskualdeak.aktibo, .probintziak.aktibo, .vegueriak.aktibo {
+    fill: #E50000;
+}
+
+/*.udalerriak:hover, .eskualdeak:hover, .probintziak:hover, .vegueriak:hover {
+    fill: #E50000;
+}*/
+
+.eskualdeak-mugak, .probintziak-mugak, .vegueriak-mugak {
+    fill: none;
+    stroke: #777;
+    stroke-dasharray: 2,2;
+    stroke-linejoin: round;
+}
+
+.udalerriak-mugak {
+    fill: none;
+    stroke: #777;
+    stroke-dasharray: 2,1;
+    stroke-linejoin: round;
+}
+
+.kanpo-mugak {
+    fill: none;
+    stroke: #777;
+    stroke-width: 2px;
+    stroke-linejoin: round;
+}
+
+#datuak {
+    position: absolute;
+    top: 390px;
+    right: 5px;
+    color: #777777;
+}
+
+#datuak .kolorea {
+    width: 15px;
+}
+
+#datuak .mota {
+    padding: 0 0 0 5px;
+    width: 70px;
+}
+
+#datuak .botoak {
+    width: 80px;
+    text-align: right;
+}
+
+#datuak .ehunekoak {
+    width: 65px;
+    text-align: right;
+}
+
+#vegueria-grafikoa {
+    position: absolute !important;
+    right: -30px;
+    top: 219px;
+}
+
+#vegueriak-taula {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#vegueriak-taula th {
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 6px;
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #fff;
+}
+
+#vegueriak-taula th.bai {
+    background-color: #009EE3;
+}
+
+#vegueriak-taula th.ez {
+    background-color: #E6205B;
+}
+
+#vegueriak-taula th.zuria {
+    background-color: #918B53;
+}
+
+#vegueriak-taula th.baliogabeak {
+    background-color: #DB9A16;
+    font-size: 14px;
+    border-right: none;
+}
+
+#vegueriak-taula tr td:first-child {
+    font-weight: bold;
+    text-align: left;
+    border-left: 1px solid #ccc;
+    padding-left: 10px;
+}
+
+#vegueriak-taula tr td {
+    border-right: 1px solid #ccc;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+#vegueriak-taula tr td {
+    font-size: 13px;
+    text-align: right;
+    border-bottom: 1px solid #ccc;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}

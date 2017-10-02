@@ -4,271 +4,41 @@
 	<head>
 		<title>Katalunia 9N - Ara es l'hora</title>
         <link href="css/c3.min.css" rel="stylesheet">
-		<style>
-			
-			body {
-				font-size: 62,5%;
-                color: #333;
-			}
-			
-            a {
-                color: #e50100;
-                text-decoration: none;
-            }
-            
-			#kontainerra {
-				margin: 0 auto 0 auto;
-				width: 666px;
-				/*border: 1px solid black;*/
-				position: relative;
-			}
-			
-            #bai_guztira .etiketa {
-                color: #009EE3;
-                font-size: 32px;
-            }
-            
-            #bai_guztira .ehunekoak {
-                font-size: 32px;
-            }
-            
-            #bai_guztira .botoak {
-                font-size: 28px;
-            }
-            
-            #ez_guztira .etiketa {
-                color: #E6205B;
-                font-size: 20px;
-            }
-            
-            #ez_guztira .ehunekoak {
-                font-size: 20px;
-            }
-            
-            #ez_guztira .botoak {
-                font-size: 18px;
-            }
-            
-            #zuria_guztira .etiketa {
-                color: #918B53;
-                font-size: 20px;
-            }
-            
-            #zuria_guztira .ehunekoak {
-                font-size: 20px;
-            }
-            
-            #zuria_guztira .botoak {
-                font-size: 18px;
-            }
-            
-            #baliogabeak_guztira .etiketa {
-                color: #DB9A16;
-                font-size: 20px;
-            }
-            
-            #baliogabeak_guztira .ehunekoak {
-                font-size: 20px;
-            }
-            
-            #baliogabeak_guztira .botoak {
-                font-size: 18px;
-            }
-            
-            #mapa-kontainerra {
-                position: relative;
-                margin-top: 60px;
-            }
-            
-            #kredituak {
-				color: #333;
-				font-family: Arial,Helvetica,sans-serif;
-				font-size: 11px;
-				left: 140px;
-				position: absolute;
-				top: 420px;
-				width: 250px;
-			}
-            
-            #mapa-argia-logoa {
-				width: 100px;
-			}
-            
-            #mapa-iametza-logoa {
-                width: 100px;
-                margin-left: 15px;
-            }
-            
-			#mapa {
-				display: inline-block;
-			}
-			
-			#unitate-izena {
-				position: absolute;
-				top: 10px;
-				right: 10px;
-				width: 450px;
-				color: #777777;
-				font-size: 2em;
-				text-align: center;
-			}
-			
-			.udalerriak, .eskualdeak, .probintziak, .vegueriak {
-				fill: #eee;
-                stroke: #777;
-				stroke-dasharray: 2,2;
-				stroke-linejoin: round;
-			}
-			
-            .udalerriak.aktibo, .eskualdeak.aktibo, .probintziak.aktibo, .vegueriak.aktibo {
-				fill: #E50000;
-			}
-            
-			/*.udalerriak:hover, .eskualdeak:hover, .probintziak:hover, .vegueriak:hover {
-				fill: #E50000;
-			}*/
-			
-			.eskualdeak-mugak, .probintziak-mugak, .vegueriak-mugak {
-				fill: none;
-				stroke: #777;
-				stroke-dasharray: 2,2;
-				stroke-linejoin: round;
-			}
-			
-			.udalerriak-mugak {
-				fill: none;
-				stroke: #777;
-				stroke-dasharray: 2,1;
-				stroke-linejoin: round;
-			}
+		<link href="css/estiloa.css" rel="stylesheet">
 
-            .kanpo-mugak {
-                fill: none;
-                stroke: #777;
-                stroke-width: 2px;
-                stroke-linejoin: round;
-            }
-            
-			#datuak {
-				position: absolute;
-				top: 390px;
-				right: 5px;
-				color: #777777;
-			}
-			
-			#datuak .kolorea {
-				width: 15px;
-			}
-			
-			#datuak .mota {
-				padding: 0 0 0 5px;
-				width: 70px;
-			}
-			
-			#datuak .botoak {
-				width: 80px;
-				text-align: right;
-			}
-
-			#datuak .ehunekoak {
-				width: 65px;
-				text-align: right;
-			}
-            
-            #vegueria-grafikoa {
-                position: absolute !important;
-                right: -30px;
-                top: 219px;
-            }
-            
-            #vegueriak-taula {
-                margin-top: 50px;
-                margin-bottom: 50px;
-            }
-            
-            #vegueriak-taula th {
-                color: #fff;
-                font-size: 16px;
-                text-align: center;
-                padding-top: 10px;
-                padding-bottom: 10px;
-                padding-right: 6px;
-                border-bottom: 1px solid #ccc;
-                border-right: 1px solid #fff;
-            }
-            
-            #vegueriak-taula th.bai {
-                background-color: #009EE3;
-            }
-            
-            #vegueriak-taula th.ez {
-                background-color: #E6205B;
-            }
-            
-            #vegueriak-taula th.zuria {
-                background-color: #918B53;
-            }
-            
-            #vegueriak-taula th.baliogabeak {
-                background-color: #DB9A16;
-                font-size: 14px;
-                border-right: none;
-            }
-            
-            #vegueriak-taula tr td:first-child {
-                font-weight: bold;
-                text-align: left;
-                border-left: 1px solid #ccc;
-                padding-left: 10px;
-            }
-            
-            #vegueriak-taula tr td {
-                border-right: 1px solid #ccc;
-                padding-right: 5px;
-                padding-left: 5px;
-            }
-            
-            #vegueriak-taula tr td {
-                font-size: 13px;
-                text-align: right;
-                border-bottom: 1px solid #ccc;
-                padding-top: 10px;
-                padding-bottom: 10px;
-            }
-		</style>
         <script type="text/javascript">
 
             var _gaq = _gaq || [];
-            
+
             _gaq.push(['_setAccount', 'UA-33197095-1']);
-            
+
             _gaq.push(['_setDomainName', '.argia.eus']);
-            
+
              _gaq.push(['_trackPageview']);
-            
-            
-            
+
+
+
             _gaq.push(['tracker2._setAccount', 'UA-4220678-1']);
-            
+
             _gaq.push(['tracker2._setDomainName', '.argia.eus']);
-            
+
              _gaq.push(['tracker2._trackPageview']);
-            
-            
-            
+
+
+
             (function() {
-            
+
             var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            
+
             ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/u/ga.js';
-            
+
             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-            
+
             })();
 
         </script>
 	</head>
-	
+
 	<body>
 		<div id="kontainerra">
             <div id="guztira-taula">
@@ -345,27 +115,27 @@
                 </tr>
             </table>
 		</div>
-        
+
 		<script src="http://d3js.org/d3.v3.min.js"></script>
 		<script src="http://d3js.org/topojson.v1.min.js"></script>
         <script type="text/javascript" src="js/c3.min.js"></script>
-        
+
 		<script>
-			var width = 520,  
-				height = 500; 
+			var width = 520,
+				height = 500;
 
-			var projection = d3.geo.mercator()  
-				.center([1.7,41.7])  
-				.scale(9000)  
-				.translate([width / 2, height / 2]); 
+			var projection = d3.geo.mercator()
+				.center([1.7,41.7])
+				.scale(9000)
+				.translate([width / 2, height / 2]);
 
-			var path = d3.geo.path()  
+			var path = d3.geo.path()
 				.projection(projection);
 
 			var svg = d3.select("#mapa").append("svg")
 				.attr("width", width)
 				.attr("height", height);
-			
+
 			var propietateen_izenak = {
 				"probintziak": {
 					id: "provincia",
@@ -380,7 +150,7 @@
 					izena: "NOM_MUNI"
 				}
 			};
-            
+
             var vegueriak = {
                 'girona': d3.set(["02", "10", "20", "28", "19", "31", "34"]),
                 'alt pirineu i aran': d3.set(["26", "05", "25", "04", "15", "39"]),
@@ -390,7 +160,7 @@
                 'lleida': d3.set(["33", "23", "27", "18", "38", "32"]),
                 'central': d3.set(["14", "35", "07", "06", "24"])
             }
-            
+
 			var probatarako_datuak = {
 				baibai: 29774,
 				baiez: 2178,
@@ -399,7 +169,7 @@
 				zuria: 155,
 				besteak: 768
 			}
-			
+
             var aukerak = {
                 koloreak: {
                     bai: "#009EE3",
@@ -408,36 +178,36 @@
                     baliogabeak: "#DB9A16"
                 }
             };
-            
+
 			//marraztuKataluniakoMapa("udalerriak");
 			marraztuKataluniakoMapa("eskualdeak");
             //marraztuKataluniakoMapa("vegueriak");
 			//marraztuKataluniakoMapa("probintziak");
-			
+
             function kalkulatuEhunekoa(balioa, guztira, hamartarrak) {
 
                 return (100 * balioa / guztira).toFixed(hamartarrak).replace(/\./g, ',');
 
             }
-            
+
 			function marraztuKataluniakoMapa(mota) {
-				
+
 				d3.json("datuak/vegueriak.json", function(error, data_values) {
-					
+
 					//console.log(data_values);
 					//if (error) return console.error(error);
                     console.log(error);
-                    
+
 					d3.json("topoJSON/" + mota + ".topo.json", function(error, cat) {
-						
+
 						console.log(cat);
-						
+
 						if (error) return console.error(error);
-						
+
                         beteGuztiraTaula(data_values);
-                        
+
                         beteVegueriakTaula(data_values);
-                        
+
 						/*svg.selectAll("." + mota)
 							.data(topojson.feature(cat, cat.objects[mota]).features)
 							.enter().append("path")
@@ -454,7 +224,7 @@
 								drawPieChart(probatarako_datuak);
 							});
 						*/
-                        
+
 						svg.append("path")
                             .datum(topojson.merge(cat, cat.objects.eskualdeak.geometries.filter(function(d) { return vegueriak['girona'].has(d.properties.comarca); })))
                             .attr("class", "vegueriak")
@@ -467,7 +237,7 @@
 								marraztuVegueriarenGrafikoa(data_values['girona'])
                                 beteTaula(data_values['girona']);
 							});
-                        
+
                         svg.append("path")
                             .datum(topojson.merge(cat, cat.objects.eskualdeak.geometries.filter(function(d) { return vegueriak['alt pirineu i aran'].has(d.properties.comarca); })))
                             .attr("class", "vegueriak")
@@ -480,7 +250,7 @@
 								marraztuVegueriarenGrafikoa(data_values['alt pirineu i aran'])
                                 beteTaula(data_values['alt pirineu i aran']);
 							});
-                        
+
                         svg.append("path")
                             .datum(topojson.merge(cat, cat.objects.eskualdeak.geometries.filter(function(d) { return vegueriak['terres de l"ebre'].has(d.properties.comarca); })))
                             .attr("class", "vegueriak")
@@ -493,7 +263,7 @@
 								marraztuVegueriarenGrafikoa(data_values['terres de l"ebre'])
                                 beteTaula(data_values['terres de l"ebre']);
 							});
-                        
+
                         svg.append("path")
                             .datum(topojson.merge(cat, cat.objects.eskualdeak.geometries.filter(function(d) { return vegueriak['tarragona'].has(d.properties.comarca); })))
                             .attr("class", "vegueriak")
@@ -506,7 +276,7 @@
 								marraztuVegueriarenGrafikoa(data_values['tarragona'])
                                 beteTaula(data_values['tarragona']);
 							});
-                        
+
                         svg.append("path")
                             .datum(topojson.merge(cat, cat.objects.eskualdeak.geometries.filter(function(d) { return vegueriak['barcelona'].has(d.properties.comarca); })))
                             .attr("class", "vegueriak aktibo")
@@ -519,9 +289,9 @@
 								marraztuVegueriarenGrafikoa(data_values['barcelona'])
                                 beteTaula(data_values['barcelona']);
 							});
-                        
+
                         drawPieChart(data_values['barcelona']);
-                        
+
                         svg.append("path")
                             .datum(topojson.merge(cat, cat.objects.eskualdeak.geometries.filter(function(d) { return vegueriak['lleida'].has(d.properties.comarca); })))
                             .attr("class", "vegueriak")
@@ -534,7 +304,7 @@
 								marraztuVegueriarenGrafikoa(data_values['lleida'])
                                 beteTaula(data_values['lleida']);
 							});
-                        
+
                         svg.append("path")
                             .datum(topojson.merge(cat, cat.objects.eskualdeak.geometries.filter(function(d) { return vegueriak['central'].has(d.properties.comarca); })))
                             .attr("class", "vegueriak")
@@ -547,7 +317,7 @@
 								marraztuVegueriarenGrafikoa(data_values['central'])
                                 beteTaula(data_values['central']);
 							});
-                        
+
                         /*
 						// Unitateen arteko mugak (a !== b)
 						svg.append("path")
@@ -563,7 +333,7 @@
 					});
 				});
 			}
-            
+
             /**
             * Function that could be used to round a number to a given decimal points. Returns the answer
             * Arguments :  number - The number that must be rounded
@@ -576,37 +346,37 @@
                    for(var i=0;i<decimal_points;i++) decimals += "0";
                    return "0."+decimals;
                }
-                
+
                var exponent = Math.pow(10,decimal_points);
                var num = Math.round((number * exponent)).toString();
-               
+
                return num.slice(0,-1*decimal_points) + "." + num.slice(-1*decimal_points)
            }
-			
+
             function beteTaula(datuak) {
-                
+
                 var botoak_guztira = datuak.bai + datuak.ez + datuak.zuria + datuak.baliogabeak;
                 //var botoak_guztira = datuak.baibai + datuak.baiez + datuak.baizuria + datuak.ez + datuak.zuria;
-                
+
                 d3.select("#bai .botoak").text(datuak.bai.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
                 d3.select("#ez .botoak").text(datuak.ez.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
                 d3.select("#zuria .botoak").text(datuak.zuria.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
                 d3.select("#baliogabeak .botoak").text(datuak.baliogabeak.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
-                
+
                 d3.select("#bai .ehunekoak").text("%" + ((roundNumber(100 * datuak.bai / botoak_guztira, 2) < 1) ? '0' : '') + roundNumber(100 * datuak.bai / botoak_guztira, 2).toString().replace(/\./g, ','));
                 d3.select("#ez .ehunekoak").text("%" + ((roundNumber(100 * datuak.ez / botoak_guztira, 2) < 1) ? '0' : '') + roundNumber(100 * datuak.ez / botoak_guztira, 2).toString().replace(/\./g, ','));
                 d3.select("#zuria .ehunekoak").text("%" + ((roundNumber(100 * datuak.zuria / botoak_guztira, 2) < 1) ? '0' : '') + roundNumber(100 * datuak.zuria / botoak_guztira, 2).toString().replace(/\./g, ','));
                 d3.select("#baliogabeak .ehunekoak").text("%" + ((roundNumber(100 * datuak.baliogabeak / botoak_guztira, 2) < 1) ? '0' : '') + roundNumber(100 * datuak.baliogabeak / botoak_guztira, 2).toString().replace(/\./g, ','));
             }
-            
+
             function beteVegueriakTaula(datuak) {
-                
+
                 var katea = "";
 
                 for (var vegueria in datuak) {
-                
+
                     var guztira = datuak[vegueria].bai + datuak[vegueria].ez + datuak[vegueria].zuria + datuak[vegueria].baliogabeak;
-                    
+
                     katea = katea +
                         "<tr>" +
                             "<td>" + datuak[vegueria].izena + "</td>" +
@@ -620,40 +390,40 @@
                 var tbody = document.querySelector("#vegueriak-taula");
 
                 tbody.innerHTML = tbody.innerHTML + katea;
-                
+
             }
-            
+
             function beteGuztiraTaula(datuak) {
-                
+
                 var botoak_guztira = 0;
                 var bai_guztira = 0;
                 var ez_guztira = 0;
                 var zuria_guztira = 0;
                 var baliogabeak_guztira = 0;
-                
+
                 for (var vegueria in datuak) {
-                    
+
                     botoak_guztira = botoak_guztira + datuak[vegueria].bai + datuak[vegueria].ez + datuak[vegueria].zuria + datuak[vegueria].baliogabeak;
                     bai_guztira = bai_guztira + datuak[vegueria].bai;
                     ez_guztira = ez_guztira + datuak[vegueria].ez;
                     zuria_guztira = zuria_guztira + datuak[vegueria].zuria;
                     baliogabeak_guztira = baliogabeak_guztira + datuak[vegueria].baliogabeak;
-                    
+
                 }
-                
+
                 d3.select("#bai_guztira .botoak").text(bai_guztira.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
                 d3.select("#ez_guztira .botoak").text(ez_guztira.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
                 d3.select("#zuria_guztira .botoak").text(zuria_guztira.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
                 d3.select("#baliogabeak_guztira .botoak").text(baliogabeak_guztira.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
-                
+
                 d3.select("#bai_guztira .ehunekoak").text("%" + ((roundNumber(100 * bai_guztira / botoak_guztira, 2) < 1) ? '0' : '') + roundNumber(100 * bai_guztira / botoak_guztira, 2).toString().replace(/\./g, ','));
                 d3.select("#ez_guztira .ehunekoak").text("%" + ((roundNumber(100 * ez_guztira / botoak_guztira, 2) < 1) ? '0' : '') + roundNumber(100 * ez_guztira / botoak_guztira, 2).toString().replace(/\./g, ','));
                 d3.select("#zuria_guztira .ehunekoak").text("%" + ((roundNumber(100 * zuria_guztira / botoak_guztira, 2) < 1) ? '0' : '') + roundNumber(100 * zuria_guztira / botoak_guztira, 2).toString().replace(/\./g, ','));
                 d3.select("#baliogabeak_guztira .ehunekoak").text("%" + ((roundNumber(100 * baliogabeak_guztira / botoak_guztira, 2) < 1) ? '0' : '') + roundNumber(100 * baliogabeak_guztira / botoak_guztira, 2).toString().replace(/\./g, ','));
             }
-            
+
             function marraztuVegueriarenGrafikoa(datuak) {
-                
+
                 var vegueriaren_grafikoa = c3.generate({
                     bindto: "#vegueria-grafikoa",
                     size: {
@@ -712,7 +482,7 @@
                     }
                 });
             }
-            
+
 			function drawPieChart(datuak) {
 				var w = 150;
 				var h = 150;
@@ -723,17 +493,17 @@
 							 "#95AA62"]; 	// Baliogabeak
 
 				var data = [{"label": "Bai",
-							 "value": datuak.bai},  
-							{"label":"Ez", 
-							 "value": datuak.ez},  
-							{"label":"Zuria", 
-							 "value": datuak.zuria},  
-							{"label":"Baliogabeak", 
+							 "value": datuak.bai},
+							{"label":"Ez",
+							 "value": datuak.ez},
+							{"label":"Zuria",
+							 "value": datuak.zuria},
+							{"label":"Baliogabeak",
 							 "value": datuak.baliogabeak}];
 
-				
+
 				d3.select("#tarta svg").remove();
-				
+
 				var vis = d3.select('#tarta')
 							.append("svg:svg")
 							.data([data])
@@ -741,7 +511,7 @@
 							.attr("height", h)
 							.append("svg:g")
 							.attr("transform", "translate(" + r + "," + r + ")");
-				
+
 				var pie = d3.layout.pie().value(function(d){return d.value;});
 
 				// declare an arc generator function
