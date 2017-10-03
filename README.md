@@ -5,7 +5,6 @@
 Bisualizazio hau software librea da eta iturburu-kodeak [GNU General Public License v3](http://www.gnu.org/licenses/gpl.html) (GPL) lizentzia du.
 
 <a rel="license" href="http://www.gnu.org/licenses/gpl.html"><img alt="GNU General Public License version 3" style="border-width:0" src="http://www.gnu.org/graphics/gplv3-127x51.png" /></a>
-<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a>
 
 ###Erabilitako liburutegien lizentziak
 
