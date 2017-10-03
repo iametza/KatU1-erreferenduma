@@ -1,5 +1,7 @@
 # ARGIA.eus - Kataluniako 2017ko urriaren 1eko erreferendumaren emaitzen bisualizazioa
 
+ARGIA.eus-en argitaratua: http://www.argia.eus/albistea/kataluniako-erreferendumaren-emaitzak-eskualdeka
+
 ## Lizentzia
 
 Bisualizazio hau software librea da eta iturburu-kodeak [GNU General Public License v3](http://www.gnu.org/licenses/gpl.html) (GPL) lizentzia du.
