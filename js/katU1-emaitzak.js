@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
         return eskala;
 
     }
-    
+
     var eskala = eskalatu();
 
     var width = 400,
@@ -315,7 +315,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
             bindto: "#vegueria-grafikoa",
             size: {
                 height: 200,
-                width: 400
+                width: 300
             },
             legend: {
                 hide: true
@@ -327,22 +327,22 @@ document.addEventListener("DOMContentLoaded", function(e) {
                 columns: [
                     ["Bai", datuak.bai],
                     ["Ez", datuak.ez],
-                    ["Zuriak", datuak.zuria],
-                    ["Baliogabeak", datuak.baliogabeak]
+                    ["Zuriak", datuak.zuria]/*,
+                    ["Baliogabeak", datuak.baliogabeak]*/
                 ],
                 type: "bar",
                 colors: {
                     "Bai": aukerak.koloreak.bai,
                     "Ez": aukerak.koloreak.ez,
-                    "Zuriak": aukerak.koloreak.zuria,
-                    "Baliogabeak": aukerak.koloreak.baliogabeak
+                    "Zuriak": aukerak.koloreak.zuria/*,
+                    "Baliogabeak": aukerak.koloreak.baliogabeak*/
                 },
                 labels: {
                     format: {
                         "Bai": function (v, id, i, j) { return "%" + datuak.bai_ehunekoa; },
                         "Ez": function (v, id, i, j) { return "%" + datuak.ez_ehunekoa; },
-                        "Zuriak": function (v, id, i, j) { return "%" + datuak.zuria_ehunekoa; },
-                        "Baliogabeak": function (v, id, i, j) { return "%" + datuak.baliogabeak_ehunekoa; }
+                        "Zuriak": function (v, id, i, j) { return "%" + datuak.zuria_ehunekoa; }/*,
+                        "Baliogabeak": function (v, id, i, j) { return "%" + datuak.baliogabeak_ehunekoa; }*/
                     }
                 }
             },
@@ -352,7 +352,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
                 },
                 y: {
                     max: (function() {
-                        return datuak.bai + datuak.ez + datuak.zuria + datuak.baliogabeak;
+                        return datuak.bai + datuak.ez + datuak.zuria;// + datuak.baliogabeak;
                     })(),
                     show: false
                 }

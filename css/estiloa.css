@@ -156,7 +156,7 @@ a {
 
 #unitate-izena {
     position: absolute;
-    top: 0px;
+    top: -20px;
     right: 10px;
     width: 590px;
     color: #777777;
@@ -228,7 +228,7 @@ a {
 
 #vegueria-grafikoa {
     position: absolute !important;
-    right: -66px;
+    right: -10px;
     top: 35px;
 }
 
