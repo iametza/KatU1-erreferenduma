@@ -83,6 +83,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
         }
     };
 
+    var errolda_guztira = 0;
     var botoak_guztira = 0;
     var bai_guztira = 0;
     var ez_guztira = 0;
@@ -109,6 +110,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
                     data_values[vegueria].botoak_guztira = data_values[vegueria].bai + data_values[vegueria].ez + data_values[vegueria].zuria + data_values[vegueria].baliogabeak;
 
+                    errolda_guztira = errolda_guztira + data_values[vegueria].errolda;
                     botoak_guztira = botoak_guztira + data_values[vegueria].botoak_guztira;
                     bai_guztira = bai_guztira + data_values[vegueria].bai;
                     ez_guztira = ez_guztira + data_values[vegueria].ez;
@@ -279,6 +281,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
         d3.select("#baliogabeak_guztira .botoak").text(baliogabeak_guztira.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
 
         d3.select("#bai_guztira .ehunekoak").text("%" + kalkulatuEhunekoa(bai_guztira, botoak_guztira - baliogabeak_guztira, 2));
+        d3.select("#partehartzea_guztira .ehunekoak").text("%" + kalkulatuEhunekoa(botoak_guztira, errolda_guztira, 2));
         d3.select("#ez_guztira .ehunekoak").text("%" + kalkulatuEhunekoa(ez_guztira, botoak_guztira - baliogabeak_guztira, 2));
         d3.select("#zuria_guztira .ehunekoak").text("%" + kalkulatuEhunekoa(zuria_guztira, botoak_guztira - baliogabeak_guztira, 2));
         d3.select("#baliogabeak_guztira .ehunekoak").text("%" + kalkulatuEhunekoa(baliogabeak_guztira, botoak_guztira, 2));
@@ -292,15 +295,15 @@ document.addEventListener("DOMContentLoaded", function(e) {
                 columns: [
                     ["Bai", datuak.bai],
                     ["Ez", datuak.ez],
-                    ["Zuriak", datuak.zuria],
-                    ["Baliogabeak", datuak.baliogabeak]
+                    ["Zuriak", datuak.zuria]/*,
+                    ["Baliogabeak", datuak.baliogabeak]*/
                 ],
                 type : 'donut',
                 colors: {
                     "Bai": aukerak.koloreak.bai,
                     "Ez": aukerak.koloreak.ez,
-                    "Zuriak": aukerak.koloreak.zuria,
-                    "Baliogabeak": aukerak.koloreak.baliogabeak
+                    "Zuriak": aukerak.koloreak.zuria/*,
+                    "Baliogabeak": aukerak.koloreak.baliogabeak*/
                 }
             },
             donut: {

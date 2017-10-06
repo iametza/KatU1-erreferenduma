@@ -31,9 +31,31 @@ a {
     text-align: center;
 }
 
+#partehartzea_guztira {
+    font-weight: bold;
+    font-size: 22px;
+}
+
+#partehartzea_guztira .ehunekoak {
+    font-weight: normal;
+    font-size: 24px;
+}
+
+#baliogabeak_guztira {
+    /*position: absolute;
+    top: 370px;
+    left: 223px;*/
+    font-weight: bold;
+
+}
+
+#baliogabeak_guztira .botoak, #baliogabeak_guztira .ehunekoak {
+    font-weight: normal;
+}
+
 #bai_guztira {
     position: absolute;
-    top: 90px;
+    top: 140px;
     text-align: center;
     left: 30px;
 }
@@ -54,7 +76,7 @@ a {
 
 #ez_guztira {
     position: absolute;
-    top: 25px;
+    top: 100px;
     right: 68px;
     text-align: center;
 }
@@ -75,7 +97,7 @@ a {
 
 #zuria_guztira {
     position: absolute;
-    top: 125px;
+    top: 210px;
     right: 65px;
     text-align: center;
 }
@@ -91,27 +113,6 @@ a {
 }
 
 #zuria_guztira .botoak {
-    font-size: 18px;
-}
-
-#baliogabeak_guztira {
-    position: absolute;
-    top: 218px;
-    text-align: center;
-    right: 36px;
-}
-
-#baliogabeak_guztira .etiketa {
-    color: #DB9A16;
-    font-size: 20px;
-    font-weight: bold;
-}
-
-#baliogabeak_guztira .ehunekoak {
-    font-size: 20px;
-}
-
-#baliogabeak_guztira .botoak {
     font-size: 18px;
 }
 
