@@ -204,7 +204,7 @@ a {
 
 #datuak {
     position: absolute;
-    top: 285px;
+    top: 300px;
     right: 12px;
     color: #777777;
 }
@@ -243,7 +243,7 @@ a {
 #vegueria-grafikoa {
     position: absolute !important;
     right: -10px;
-    top: 95px;
+    top: 105px;
 }
 
 #vegueriak-taula {
@@ -252,7 +252,7 @@ a {
 
 #vegueriak-taula th {
     color: #fff;
-    font-size: 16px;
+    font-size: 13px;
     text-align: center;
     padding: 10px 6px;
     border-bottom: 1px solid #ccc;
@@ -277,7 +277,6 @@ a {
 
 #vegueriak-taula th.baliogabeak {
     background-color: #DB9A16;
-    font-size: 14px;
     border-right: none;
 }
 
