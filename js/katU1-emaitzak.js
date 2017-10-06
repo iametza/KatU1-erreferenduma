@@ -129,8 +129,8 @@ document.addEventListener("DOMContentLoaded", function(e) {
                     "botoak_guztira": botoak_guztira,
                     "bai": bai_guztira,
                     "ez": ez_guztira,
-                    "zuria": zuria_guztira,
-                    "baliogabeak": baliogabeak_guztira
+                    "zuria": zuria_guztira/*,
+                    "baliogabeak": baliogabeak_guztira*/
                 });
 
                 beteVegueriakTaula(data_values);
@@ -240,11 +240,13 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
     function beteTaula(datuak, vegueria) {
 
+        d3.select("#errolda .botoak").text(datuak[vegueria].errolda.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
         d3.select("#bai .botoak").text(datuak[vegueria].bai.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
         d3.select("#ez .botoak").text(datuak[vegueria].ez.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
         d3.select("#zuria .botoak").text(datuak[vegueria].zuria.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
         d3.select("#baliogabeak .botoak").text(datuak[vegueria].baliogabeak.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
 
+        d3.select("#partehartzea .ehunekoak").text("%" + kalkulatuEhunekoa(datuak[vegueria].botoak_guztira, datuak[vegueria].errolda, 2));
         d3.select("#bai .ehunekoak").text("%" + datuak[vegueria].bai_ehunekoa);
         d3.select("#ez .ehunekoak").text("%" + datuak[vegueria].ez_ehunekoa);
         d3.select("#zuria .ehunekoak").text("%" + datuak[vegueria].zuria_ehunekoa);
@@ -260,6 +262,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
             katea = katea +
                 "<tr>" +
                     "<td>" + datuak[vegueria].izena + "</td>" +
+                    "<td>" + (datuak[vegueria].errolda > 0 ? "%" + kalkulatuEhunekoa(datuak[vegueria].botoak_guztira, datuak[vegueria].errolda, 2) : "") + "</td>" +
                     "<td>" + datuak[vegueria].bai.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " (%" + datuak[vegueria].bai_ehunekoa + ")" + "</td>" +
                     "<td>" + datuak[vegueria].ez.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " (%" + datuak[vegueria].ez_ehunekoa + ")" + "</td>" +
                     "<td>" + datuak[vegueria].zuria.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " (%" + datuak[vegueria].zuria_ehunekoa + ")" + "</td>" +

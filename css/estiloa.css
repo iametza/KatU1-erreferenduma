@@ -204,7 +204,7 @@ a {
 
 #datuak {
     position: absolute;
-    top: 225px;
+    top: 285px;
     right: 12px;
     color: #777777;
 }
@@ -228,10 +228,22 @@ a {
     text-align: right;
 }
 
+#unitatea-datuak {
+    position: absolute;
+    font-weight: bold;
+    top: 33px;
+    right: 25px;
+    text-align: center;
+    color: #777;
+}
+
+#unitatea-datuak .botoak, #unitatea-datuak .ehunekoak {
+    font-weight: normal;
+}
 #vegueria-grafikoa {
     position: absolute !important;
     right: -10px;
-    top: 35px;
+    top: 95px;
 }
 
 #vegueriak-taula {
@@ -245,6 +257,10 @@ a {
     padding: 10px 6px;
     border-bottom: 1px solid #ccc;
     border-right: 1px solid #fff;
+}
+
+#vegueriak-taula th.partehartzea {
+    background-color: #777;
 }
 
 #vegueriak-taula th.bai {
